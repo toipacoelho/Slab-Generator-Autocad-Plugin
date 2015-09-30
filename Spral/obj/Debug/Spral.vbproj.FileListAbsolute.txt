@@ -1,0 +1,90 @@
+c:\users\pedro ceolho\documents\visual studio 2012\Projects\Spral\Spral\bin\Debug\Spral.dll
+c:\users\pedro ceolho\documents\visual studio 2012\Projects\Spral\Spral\bin\Debug\Spral.pdb
+c:\users\pedro ceolho\documents\visual studio 2012\Projects\Spral\Spral\bin\Debug\Spral.xml
+c:\users\pedro ceolho\documents\visual studio 2012\Projects\Spral\Spral\obj\Debug\Spral.vbprojResolveAssemblyReference.cache
+c:\users\pedro ceolho\documents\visual studio 2012\Projects\Spral\Spral\obj\Debug\Spral.Resources.resources
+c:\users\pedro ceolho\documents\visual studio 2012\Projects\Spral\Spral\obj\Debug\Spral.Spral.MyCommands.resources
+c:\users\pedro ceolho\documents\visual studio 2012\Projects\Spral\Spral\obj\Debug\Spral.vbproj.GenerateResource.Cache
+c:\users\pedro ceolho\documents\visual studio 2012\Projects\Spral\Spral\obj\Debug\Spral.dll
+c:\users\pedro ceolho\documents\visual studio 2012\Projects\Spral\Spral\obj\Debug\Spral.xml
+c:\users\pedro ceolho\documents\visual studio 2012\Projects\Spral\Spral\obj\Debug\Spral.pdb
+F:\Spral\Spral\obj\Debug\Spral.vbprojResolveAssemblyReference.cache
+F:\Spral\Spral\obj\Debug\Spral.Resources.resources
+F:\Spral\Spral\obj\Debug\Spral.Spral.MyCommands.resources
+F:\Spral\Spral\obj\Debug\Spral.vbproj.GenerateResource.Cache
+F:\Spral\Spral\obj\Debug\Spral.dll
+F:\Spral\Spral\obj\Debug\Spral.xml
+F:\Spral\Spral\obj\Debug\Spral.pdb
+F:\Spral\Spral\bin\Debug\Spral.dll
+F:\Spral\Spral\bin\Debug\Spral.pdb
+F:\Spral\Spral\bin\Debug\Spral.xml
+E:\Spral\Spral\bin\Debug\Spral.dll
+E:\Spral\Spral\bin\Debug\Spral.pdb
+E:\Spral\Spral\bin\Debug\Spral.xml
+E:\Spral\Spral\obj\Debug\Spral.vbprojResolveAssemblyReference.cache
+E:\Spral\Spral\obj\Debug\Spral.Form1.resources
+E:\Spral\Spral\obj\Debug\Spral.Resources.resources
+E:\Spral\Spral\obj\Debug\Spral.Spral.MyCommands.resources
+E:\Spral\Spral\obj\Debug\Spral.vbproj.GenerateResource.Cache
+E:\Spral\Spral\obj\Debug\Spral.dll
+E:\Spral\Spral\obj\Debug\Spral.xml
+E:\Spral\Spral\obj\Debug\Spral.pdb
+C:\Users\Pedro Ceolho\Documents\Visual Studio 2013\Projects\Spral\Spral\bin\Debug\Spral.dll
+C:\Users\Pedro Ceolho\Documents\Visual Studio 2013\Projects\Spral\Spral\bin\Debug\Spral.pdb
+C:\Users\Pedro Ceolho\Documents\Visual Studio 2013\Projects\Spral\Spral\bin\Debug\Spral.xml
+C:\Users\Pedro Ceolho\Documents\Visual Studio 2013\Projects\Spral\Spral\obj\Debug\Spral.vbprojResolveAssemblyReference.cache
+C:\Users\Pedro Ceolho\Documents\Visual Studio 2013\Projects\Spral\Spral\obj\Debug\Spral.Resources.resources
+C:\Users\Pedro Ceolho\Documents\Visual Studio 2013\Projects\Spral\Spral\obj\Debug\Spral.Spral.MyCommands.resources
+C:\Users\Pedro Ceolho\Documents\Visual Studio 2013\Projects\Spral\Spral\obj\Debug\Spral.vbproj.GenerateResource.Cache
+C:\Users\Pedro Ceolho\Documents\Visual Studio 2013\Projects\Spral\Spral\obj\Debug\Spral.dll
+C:\Users\Pedro Ceolho\Documents\Visual Studio 2013\Projects\Spral\Spral\obj\Debug\Spral.xml
+C:\Users\Pedro Ceolho\Documents\Visual Studio 2013\Projects\Spral\Spral\obj\Debug\Spral.pdb
+C:\Users\Pedro Ceolho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\bin\Debug\Spral.dll
+C:\Users\Pedro Ceolho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\bin\Debug\Spral.pdb
+C:\Users\Pedro Ceolho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\bin\Debug\Spral.xml
+C:\Users\Pedro Ceolho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\obj\Debug\Spral.Resources.resources
+C:\Users\Pedro Ceolho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\obj\Debug\Spral.vbproj.GenerateResource.Cache
+C:\Users\Pedro Ceolho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\obj\Debug\Spral.dll
+C:\Users\Pedro Ceolho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\obj\Debug\Spral.xml
+C:\Users\Pedro Ceolho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\obj\Debug\Spral.pdb
+C:\Users\Pedro Coelho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\bin\Debug\Spral.dll
+C:\Users\Pedro Coelho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\bin\Debug\Spral.pdb
+C:\Users\Pedro Coelho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\bin\Debug\Spral.xml
+C:\Users\Pedro Coelho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\obj\Debug\Spral.vbprojResolveAssemblyReference.cache
+C:\Users\Pedro Coelho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\obj\Debug\Spral.Resources.resources
+C:\Users\Pedro Coelho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\obj\Debug\Spral.Spral.MyCommands.resources
+C:\Users\Pedro Coelho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\obj\Debug\Spral.vbproj.GenerateResource.Cache
+C:\Users\Pedro Coelho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\obj\Debug\Spral.dll
+C:\Users\Pedro Coelho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\obj\Debug\Spral.xml
+C:\Users\Pedro Coelho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\obj\Debug\Spral.pdb
+C:\Users\Pedro Ceolho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\obj\Debug\Spral.Spral.MyCommands.resources
+C:\Users\Pedro Ceolho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\bin\Debug\Spral.dll.config
+C:\Users\Pedro Ceolho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\bin\Debug\Microsoft.Office.Tools.Excel.v4.0.Utilities.dll
+C:\Users\Pedro Ceolho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\bin\Debug\Microsoft.Office.Tools.Excel.v4.0.Utilities.xml
+C:\Users\Pedro Ceolho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\obj\Debug\Spral.vbprojResolveAssemblyReference.cache
+C:\Users\Pedro Ceolho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\bin\Debug\AcMPolygonMGD.dll
+C:\Users\Pedro Ceolho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\bin\Debug\FileHelpers.dll
+C:\Users\Pedro Ceolho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\bin\Debug\FileHelpers.xml
+C:\Users\Pedro Ceolho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\obj\Debug\Spral.FormAli.resources
+C:\Users\Pedro Coelho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\bin\Debug\Spral.dll.config
+C:\Users\Pedro Coelho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\bin\Debug\AcMPolygonMGD.dll
+C:\Users\Pedro Coelho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\bin\Debug\FileHelpers.dll
+C:\Users\Pedro Coelho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\bin\Debug\FileHelpers.xml
+C:\Users\Pedro Coelho\Documents\Visual Studio 2013\Projects\Spral.vb\Spral\obj\Debug\Spral.FormAli.resources
+C:\Users\Pedro Ceolho\Dropbox\Spral.vb\Spral\bin\Debug\Spral.dll.config
+C:\Users\Pedro Ceolho\Dropbox\Spral.vb\Spral\bin\Debug\Spral.dll
+C:\Users\Pedro Ceolho\Dropbox\Spral.vb\Spral\bin\Debug\Spral.pdb
+C:\Users\Pedro Ceolho\Dropbox\Spral.vb\Spral\bin\Debug\Spral.xml
+C:\Users\Pedro Ceolho\Dropbox\Spral.vb\Spral\bin\Debug\AcMPolygonMGD.dll
+C:\Users\Pedro Ceolho\Dropbox\Spral.vb\Spral\bin\Debug\FileHelpers.dll
+C:\Users\Pedro Ceolho\Dropbox\Spral.vb\Spral\bin\Debug\FileHelpers.xml
+C:\Users\Pedro Ceolho\Dropbox\Spral.vb\Spral\obj\Debug\Spral.vbprojResolveAssemblyReference.cache
+C:\Users\Pedro Ceolho\Dropbox\Spral.vb\Spral\obj\Debug\Spral.FormAli.resources
+C:\Users\Pedro Ceolho\Dropbox\Spral.vb\Spral\obj\Debug\Spral.FormAlv.resources
+C:\Users\Pedro Ceolho\Dropbox\Spral.vb\Spral\obj\Debug\Spral.Resources.resources
+C:\Users\Pedro Ceolho\Dropbox\Spral.vb\Spral\obj\Debug\Spral.Spral.MyCommands.resources
+C:\Users\Pedro Ceolho\Dropbox\Spral.vb\Spral\obj\Debug\Spral.vbproj.GenerateResource.Cache
+C:\Users\Pedro Ceolho\Dropbox\Spral.vb\Spral\obj\Debug\Spral.dll
+C:\Users\Pedro Ceolho\Dropbox\Spral.vb\Spral\obj\Debug\Spral.xml
+C:\Users\Pedro Ceolho\Dropbox\Spral.vb\Spral\obj\Debug\Spral.pdb
+C:\Users\Pedro Ceolho\Dropbox\Spral.vb\Spral\obj\Debug\Spral.FormCob.resources

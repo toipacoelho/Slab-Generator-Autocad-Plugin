@@ -422,7 +422,7 @@ Namespace Spral
 
         Private Function getlowerpoint(pline As Polyline, x As Double) As Point3d
             Dim result As Double = 0
-            Dim l As Line = New Line(New Point3d(x, -10 * pline.Length, 0), New Point3d(x, 10 * pline.Length, 0))
+            Dim l As Line = New Line(New Point3d(x, -1000 * pline.Length, 0), New Point3d(x, 1000 * pline.Length, 0))
             Dim pts As Point3dCollection = New Point3dCollection()
             Dim lista As List(Of Point3d) = New List(Of Point3d)
 
@@ -504,7 +504,7 @@ Namespace Spral
         Private Function getWidth(pline As Polyline, apt As Point3d) As Double
             Dim result As Double = 0
             Dim aux As Point3d = apt
-            Dim l As Line = New Line(New Point3d(apt.X, -pline.Length, 0), New Point3d(apt.X, apt.Y + pline.Length, 0))
+            Dim l As Line = New Line(New Point3d(apt.X, 1000 * -pline.Length, 0), New Point3d(apt.X, apt.Y + 1000 * pline.Length, 0))
             Dim pts As Point3dCollection = New Point3dCollection()
             Dim lista As List(Of Point3d) = New List(Of Point3d)
 

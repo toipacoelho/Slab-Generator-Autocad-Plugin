@@ -250,7 +250,7 @@ Namespace Spral
                 If i + 0.12 + blclength > startPoint.X + length And (startPoint.X + length) - (i + 0.12) < blclength * 0.5 Then
                     Exit For
                 End If
-                lajewidth = getWidth(poly, New Point3d(i + 0.37, a.Y + vgtexceed, 0))
+                lajewidth = getWidth(poly, New Point3d(i + 0.12 + blclength / 2, a.Y + vgtexceed, 0))
                 drawBlcTrg(New Point2d(a.X, getlowerpoint(poly, a.X + blclength * 0.5).Y), blclength, lajewidth, poly, i, rotation)
 
             Next
@@ -306,7 +306,7 @@ Namespace Spral
                 If i + 0.24 + blclength > startPoint.X + length And (startPoint.X + length) - (i + 0.24) < blclength * 0.5 Then
                     Exit For
                 End If
-                lajewidth = getWidth(poly, New Point3d(i + 0.245, a.Y + vgtexceed, 0))
+                lajewidth = getWidth(poly, New Point3d(i + 0.24 + blclength, a.Y + vgtexceed, 0))
                 drawBlcTrg(New Point2d(a.X, a.Y + vgtexceed), blclength, lajewidth, poly, i + 0.12, rotation)
             Next
         End Sub
@@ -373,7 +373,7 @@ Namespace Spral
                     Exit For
                 End If
 
-                lajewidth = getWidth(poly, New Point3d(i + 0.245, a.Y + vgtexceed, 0))
+                lajewidth = getWidth(poly, New Point3d(i + 0.36 + blclength, a.Y + vgtexceed, 0))
                 drawBlcTrg(New Point2d(a.X, a.Y + vgtexceed), blclength, lajewidth, poly, i + 0.24, rotation)
             Next
         End Sub
@@ -381,6 +381,8 @@ Namespace Spral
         ''draw blocos, with tarufo if needed
         Private Function drawBlcTrg(point As Point2d, blclength As Double, width As Double, poly As Polyline, i As Double, rotation As Matrix3d) As Double
             Dim flag As Integer = 0
+
+
 
             For j As Double = point.Y To point.Y + width + BLCWIDTH Step BLCWIDTH
                 ' teste para garantir que não ultrpassa o limite da laje

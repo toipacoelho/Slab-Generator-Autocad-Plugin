@@ -403,7 +403,9 @@ Namespace Spral
         Private Function drawBlcTrg(point As Point2d, blclength As Double, width As Double, poly As Polyline, i As Double, rotation As Matrix3d) As Double
             Dim flag As Integer = 0
 
-
+            'Declare a single-dimension array and set array element values
+            Dim spacing = getTrg(maxWidth)
+            Dim z As Integer = 0
 
             For j As Double = point.Y To point.Y + width + BLCWIDTH Step BLCWIDTH
                 ' teste para garantir que não ultrpassa o limite da laje
@@ -416,18 +418,25 @@ Namespace Spral
 
                 flag += 1
 
-                If width < 2 And flag = True And getWidth(poly, New Point3d(point.X, point.Y, 0)) <> getWidth(poly, New Point3d(point.X + 0.01, point.Y, 0)) Or width > 2 Then
-                    If j = point.Y + 0.75 And Math.Floor(maxWidth / 2) Mod 2 <> 0 Then
+                If z < spacing.Length Then
+                    If flag = spacing(z) Then
                         j += 0.1
-                        flag = 0
-                    End If
-
-                    If flag = 8 Then
-                        j += 0.1
+                        z += 1
                         flag = 0
                     End If
                 End If
 
+                'If width < 2 And flag = True And getWidth(poly, New Point3d(point.X, point.Y, 0)) <> getWidth(poly, New Point3d(point.X + 0.01, point.Y, 0)) Or width > 2 Then
+                '    If j = point.Y + 0.75 And Math.Floor(maxWidth / 2) Mod 2 <> 0 Then
+                '        j += 0.1
+                '        flag = 0
+                '    End If
+
+                '    If flag = 8 Then
+                '        j += 0.1
+                '        flag = 0
+                '    End If
+                'End If
 
             Next
         End Function

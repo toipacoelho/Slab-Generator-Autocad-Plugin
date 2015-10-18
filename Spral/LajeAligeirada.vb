@@ -118,19 +118,19 @@ Namespace Spral
 
                 Dim result(ntrg - 1) As Integer
 
-                result(0) = sfit
+                result(0) = sfit * 0.25
 
                 ''acDoc.Editor.WriteMessage("N.Blocos: " & result(0) & vbLf)
 
                 For i As Integer = 1 To ntrg - 1
-                    result(i) = bfit
+                    result(i) = result(0) + bfit * 0.25 + 0.1
                     ''acDoc.Editor.WriteMessage("N.Blocos: " & result(i))
                 Next
 
                 Return result
             Else
                 Dim result(1) As Integer
-                result(0) = bfit
+                result(0) = bfit * 0.25
                 ''acDoc.Editor.WriteMessage("N.Blocos: " & result(0) & vbLf)
                 Return result
             End If

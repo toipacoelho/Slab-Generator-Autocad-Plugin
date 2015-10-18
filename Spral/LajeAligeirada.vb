@@ -116,7 +116,7 @@ Namespace Spral
                 ''acDoc.Editor.WriteMessage("Dside: " & twidth & vbLf)
                 Dim sfit As Integer = Math.Floor((twidth / 2) / 0.25)
 
-                Dim result(ntrg - 1) As Integer
+                Dim result(ntrg - 1) As Double
 
                 result(0) = sfit * 0.25
 
@@ -129,7 +129,7 @@ Namespace Spral
 
                 Return result
             Else
-                Dim result(1) As Integer
+                Dim result(1) As Double
                 result(0) = bfit * 0.25
                 ''acDoc.Editor.WriteMessage("N.Blocos: " & result(0) & vbLf)
                 Return result

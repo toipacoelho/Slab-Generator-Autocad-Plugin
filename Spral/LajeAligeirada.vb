@@ -100,6 +100,27 @@ Namespace Spral
 
         End Sub
 
+        ''gets positions
+        Private Function getTrg(width As Double)
+            Dim ntrg As Integer = width / 2
+            Dim bfit As Integer = ((width - (ntrg * 0.1)) / ntrg) / 0.25
+            If ((bfit + 1) * 0.25 <= 2) Then
+                bfit = bfit + 1
+            End If
+            Dim sfit As Integer = width - (ntrg * 0.1) - ((ntrg - 1) * bfit * 0.25)
+            sfit = (sfit / 2) / 0.25
+
+            Dim result(ntrg - 1) As Integer
+
+            result(0) = sfit
+
+            For i As Integer = 1 To ntrg - 1
+                result(i) = bfit
+            Next
+
+            Return result
+        End Function
+
         ''prompts user for point 3D
         Private Function promptForPoint(msg As String) As Point3d
 
@@ -599,18 +620,18 @@ Namespace Spral
                 If altura = 0.12 Then YY = "04"
                 If altura = 0.16 Then YY = "11"
                 If altura = 0.2 Then YY = "10"
-            ElseIf size = 0.4
+            ElseIf size = 0.4 Then
                 If altura = 0.09 Then YY = "01"
                 If altura = 0.12 Then YY = "07"
                 If altura = 0.16 Then YY = "11"
                 If altura = 0.2 Then YY = "09"
                 If altura = 0.25 Then YY = "10"
-            ElseIf size = 0.33
+            ElseIf size = 0.33 Then
                 If altura = 0.12 Then YY = "02"
                 If altura = 0.16 Then YY = "04"
                 If altura = 0.2 Then YY = "05"
                 If altura = 0.25 Then YY = "06"
-            ElseIf size = 0.22
+            ElseIf size = 0.22 Then
                 If altura = 0.2 Then YY = "02"
                 If altura = 0.3 Then YY = "03"
                 If altura = 0.25 Then YY = "04"

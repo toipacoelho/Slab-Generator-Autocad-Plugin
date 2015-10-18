@@ -122,3 +122,20 @@ C:\Users\Pedro Ceolho\Documents\spral.git\Spral\obj\Debug\Spral.vbproj.GenerateR
 C:\Users\Pedro Ceolho\Documents\spral.git\Spral\obj\Debug\Spral.dll
 C:\Users\Pedro Ceolho\Documents\spral.git\Spral\obj\Debug\Spral.xml
 C:\Users\Pedro Ceolho\Documents\spral.git\Spral\obj\Debug\Spral.pdb
+C:\Users\lili\Desktop\spral\Spral\bin\Debug\Spral.dll.config
+C:\Users\lili\Desktop\spral\Spral\bin\Debug\Spral.dll
+C:\Users\lili\Desktop\spral\Spral\bin\Debug\Spral.pdb
+C:\Users\lili\Desktop\spral\Spral\bin\Debug\Spral.xml
+C:\Users\lili\Desktop\spral\Spral\bin\Debug\AcMPolygonMGD.dll
+C:\Users\lili\Desktop\spral\Spral\bin\Debug\FileHelpers.dll
+C:\Users\lili\Desktop\spral\Spral\bin\Debug\FileHelpers.xml
+C:\Users\lili\Desktop\spral\Spral\obj\Debug\Spral.vbprojResolveAssemblyReference.cache
+C:\Users\lili\Desktop\spral\Spral\obj\Debug\Spral.FormAli.resources
+C:\Users\lili\Desktop\spral\Spral\obj\Debug\Spral.FormAlv.resources
+C:\Users\lili\Desktop\spral\Spral\obj\Debug\Spral.FormCob.resources
+C:\Users\lili\Desktop\spral\Spral\obj\Debug\Spral.Resources.resources
+C:\Users\lili\Desktop\spral\Spral\obj\Debug\Spral.Spral.MyCommands.resources
+C:\Users\lili\Desktop\spral\Spral\obj\Debug\Spral.vbproj.GenerateResource.Cache
+C:\Users\lili\Desktop\spral\Spral\obj\Debug\Spral.dll
+C:\Users\lili\Desktop\spral\Spral\obj\Debug\Spral.xml
+C:\Users\lili\Desktop\spral\Spral\obj\Debug\Spral.pdb

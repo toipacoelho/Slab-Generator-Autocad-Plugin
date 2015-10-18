@@ -112,3 +112,20 @@ C:\Users\Pedro Ceolho\Documents\spral.git\Spral\obj\Release\Spral.vbproj.Generat
 C:\Users\Pedro Ceolho\Documents\spral.git\Spral\obj\Release\Spral.dll
 C:\Users\Pedro Ceolho\Documents\spral.git\Spral\obj\Release\Spral.xml
 C:\Users\Pedro Ceolho\Documents\spral.git\Spral\obj\Release\Spral.pdb
+C:\Users\lili\Desktop\spral\Spral\bin\Release\Spral.dll.config
+C:\Users\lili\Desktop\spral\Spral\bin\Release\Spral.dll
+C:\Users\lili\Desktop\spral\Spral\bin\Release\Spral.pdb
+C:\Users\lili\Desktop\spral\Spral\bin\Release\Spral.xml
+C:\Users\lili\Desktop\spral\Spral\bin\Release\AcMPolygonMGD.dll
+C:\Users\lili\Desktop\spral\Spral\bin\Release\FileHelpers.dll
+C:\Users\lili\Desktop\spral\Spral\bin\Release\FileHelpers.xml
+C:\Users\lili\Desktop\spral\Spral\obj\Release\Spral.vbprojResolveAssemblyReference.cache
+C:\Users\lili\Desktop\spral\Spral\obj\Release\Spral.FormAli.resources
+C:\Users\lili\Desktop\spral\Spral\obj\Release\Spral.FormAlv.resources
+C:\Users\lili\Desktop\spral\Spral\obj\Release\Spral.FormCob.resources
+C:\Users\lili\Desktop\spral\Spral\obj\Release\Spral.Resources.resources
+C:\Users\lili\Desktop\spral\Spral\obj\Release\Spral.Spral.MyCommands.resources
+C:\Users\lili\Desktop\spral\Spral\obj\Release\Spral.vbproj.GenerateResource.Cache
+C:\Users\lili\Desktop\spral\Spral\obj\Release\Spral.dll
+C:\Users\lili\Desktop\spral\Spral\obj\Release\Spral.xml
+C:\Users\lili\Desktop\spral\Spral\obj\Release\Spral.pdb

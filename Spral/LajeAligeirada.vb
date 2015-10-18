@@ -102,23 +102,38 @@ Namespace Spral
 
         ''gets positions
         Private Function getTrg(width As Double)
-            Dim ntrg As Integer = width / 2
-            Dim bfit As Integer = ((width - (ntrg * 0.1)) / ntrg) / 0.25
-            If ((bfit + 1) * 0.25 <= 2) Then
-                bfit = bfit + 1
+            ''acDoc.Editor.WriteMessage("Width: " & width & vbLf)
+            Dim ntrg As Integer = Math.Floor(width / 2)
+            ''acDoc.Editor.WriteMessage("ntrg: " & ntrg & vbLf)
+            Dim bfit As Integer = Math.Floor(((width - (ntrg * 0.1)) / (ntrg + 1)) / 0.25)
+
+            If (ntrg > 1) Then
+                If ((bfit + 1) * 0.25 <= 2) Then
+                    bfit = bfit + 1
+                End If
+                Dim twidth As Double = width - (ntrg * 0.1) - ((ntrg - 1) * bfit * 0.25)
+                ''acDoc.Editor.WriteMessage("Dmidle: " & ((width - (ntrg * 0.1)) / ntrg) & vbLf)
+                ''acDoc.Editor.WriteMessage("Dside: " & twidth & vbLf)
+                Dim sfit As Integer = Math.Floor((twidth / 2) / 0.25)
+
+                Dim result(ntrg - 1) As Integer
+
+                result(0) = sfit
+
+                ''acDoc.Editor.WriteMessage("N.Blocos: " & result(0) & vbLf)
+
+                For i As Integer = 1 To ntrg - 1
+                    result(i) = bfit
+                    ''acDoc.Editor.WriteMessage("N.Blocos: " & result(i))
+                Next
+
+                Return result
+            Else
+                Dim result(1) As Integer
+                result(0) = bfit
+                ''acDoc.Editor.WriteMessage("N.Blocos: " & result(0) & vbLf)
+                Return result
             End If
-            Dim sfit As Integer = width - (ntrg * 0.1) - ((ntrg - 1) * bfit * 0.25)
-            sfit = (sfit / 2) / 0.25
-
-            Dim result(ntrg - 1) As Integer
-
-            result(0) = sfit
-
-            For i As Integer = 1 To ntrg - 1
-                result(i) = bfit
-            Next
-
-            Return result
         End Function
 
         ''prompts user for point 3D

@@ -273,8 +273,12 @@ Namespace Spral
                 g = New Point2d(f.X, f.Y + rpwith)
                 h = New Point2d(e.X, g.Y)
                 If assertInPoly(e, f, g, h, poly) Then
-                    drawRectangle(e, f, g, h, rotation)
-                    add(getReferenceRipa(buffer))
+                    If Not queromijar(poly, f, e) Then
+                        drawRectangle(e, f, g, h, rotation)
+                        add(getReferenceRipa(buffer))
+                        drawRectangle(e, f, g, h, rotation)
+                        add(getReferenceRipa(buffer))
+                    End If
                 End If
             Next
 

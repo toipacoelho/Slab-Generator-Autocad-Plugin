@@ -307,8 +307,15 @@ Namespace Spral
                             drawRectangle(e, f, g, h, rotation)
                             add(getReferenceRipa(buffer))
                         Else
-                            f = querocagar(poly, e, f)
-                            g = New Point2d(f.X, f.Y + rpwith)
+                            If b.GetDistanceTo(c) < getWidth(poly, New Point3d(b.X - buffer, b.Y, 0)) Then
+                                e = querocagar(poly, e, f)
+                                f = New Point2d(a.X - buffer, e.Y)
+                                g = New Point2d(f.X, f.Y + rpwith)
+                                h = New Point2d(e.X, g.Y)
+                            Else
+                                f = querocagar(poly, e, f)
+                                g = New Point2d(f.X, f.Y + rpwith)
+                            End If
                             drawRectangle(e, f, g, h, rotation)
                             add(getReferenceRipa(buffer))
                         End If
@@ -346,7 +353,7 @@ Namespace Spral
 
         End Sub
 
-        ''mostra a tua raça o teu querer e ambiçao, nos so queremos esta merda a funcionar
+        ''mostra a tua raça o teu querer e ambiçao, nos so queremos o dinheiro na mao
         Private Function queromijar(pline As Polyline, p As Point2d, q As Point2d) As Boolean
             Dim l1 As Line = New Line(New Point3d(p.X, p.Y, 0), New Point3d(q.X, q.Y, 0))
             Dim l2 As Line

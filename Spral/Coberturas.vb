@@ -180,7 +180,7 @@ Namespace Spral
             Return New Point3d(result.X, aPt.Y, 0)
         End Function
 
-        ''função awesome que nos da a largura da laje! x wyse
+        'função awesome que nos da a largura da laje! x wyse
         Private Function getWidth(pline As Polyline, apt As Point3d) As Double
             Dim result As Double = 0
             Dim aux As Point3d = apt
@@ -193,11 +193,11 @@ Namespace Spral
             For Each pt In pts
                 lista.Add(pt)
             Next
-            For i = 1 To lista.Count - 1
-                If lista.Item(i).DistanceTo(lista.Item(i - 1)) > result Then result = lista.Item(i).DistanceTo(lista.Item(i - 1))
-            Next
+            'For i = 1 To lista.Count - 1
+            '    If lista.Item(i).DistanceTo(lista.Item(i - 1)) > result Then result = lista.Item(i).DistanceTo(lista.Item(i - 1))
+            'Next
 
-            Return result
+            Return lista.Item(0).DistanceTo(lista.Item(1))
         End Function
 
         ''calcula o tamanho da vigota, retorna o excesso
@@ -279,25 +279,25 @@ Namespace Spral
             Next
 
             'esquerda
-            For i = mf To 0 Step buffer * (-1)
-                a = New Point2d(startpoint.X + i - prfwidth / 2, getlowerpoint(poly, startpoint.X + i - prfwidth / 2).Y)
-                b = New Point2d(a.X + prfwidth, a.Y)
-                c = New Point2d(b.X, b.Y + getWidth(poly, New Point3d(a.X, a.Y, 0)))
-                d = New Point2d(a.X, c.Y)
-                printDimension(b, c, rotation)
-                drawRectangle(a, b, c, d, rotation)
-                add(getReferenceperfil(b.GetDistanceTo(c)))
-                For j = 0 To maxWidth Step telha
-                    e = New Point2d(a.X + prfwidth / 2, startpoint.Y + j)
-                    f = New Point2d(e.X - buffer, e.Y)
-                    g = New Point2d(f.X, f.Y + rpwith)
-                    h = New Point2d(e.X, g.Y)
-                    If assertInPoly(e, f, g, h, poly) Then
-                        drawRectangle(e, f, g, h, rotation)
-                        add(getReferenceRipa(buffer))
-                    End If
-                Next
-            Next
+            'For i = mf To 0 Step buffer * (-1)
+            '    a = New Point2d(startpoint.X + i - prfwidth / 2, getlowerpoint(poly, startpoint.X + i - prfwidth / 2).Y)
+            '    b = New Point2d(a.X + prfwidth, a.Y)
+            '    c = New Point2d(b.X, b.Y + getWidth(poly, New Point3d(a.X, a.Y, 0)))
+            '    d = New Point2d(a.X, c.Y)
+            '    printDimension(b, c, rotation)mo
+            '    drawRectangle(a, b, c, d, rotation)
+            '    add(getReferenceperfil(b.GetDistanceTo(c)))
+            '    For j = 0 To maxWidth Step telha
+            '        e = New Point2d(a.X + prfwidth / 2, startpoint.Y + j)
+            '        f = New Point2d(e.X - buffer, e.Y)
+            '        g = New Point2d(f.X, f.Y + rpwith)
+            '        h = New Point2d(e.X, g.Y)
+            '        If assertInPoly(e, f, g, h, poly) Then
+            '            drawRectangle(e, f, g, h, rotation)
+            '            add(getReferenceRipa(buffer))
+            '        End If
+            '    Next
+            'Next
 
             'direita
             For i = ml To length Step buffer
@@ -313,6 +313,7 @@ Namespace Spral
                     f = New Point2d(e.X + buffer, e.Y)
                     g = New Point2d(f.X, f.Y + rpwith)
                     h = New Point2d(e.X, g.Y)
+                    acDoc.Editor.WriteMessage(getWidth(poly, New Point3d(e.X, e.Y, 0)) & vbLf)
                     If assertInPoly(e, f, g, h, poly) Then
                         drawRectangle(e, f, g, h, rotation)
                         add(getReferenceRipa(buffer))

@@ -118,20 +118,20 @@ Namespace Spral
 
                 Dim result(ntrg - 1) As Double
 
-                result(0) = sfit * 0.25
+                result(0) = sfit
 
-                acDoc.Editor.WriteMessage("1 - N.Blocos: " & result(0) & vbLf)
+                ' acDoc.Editor.WriteMessage("1 - N.Blocos: " & result(0) & vbLf)
 
                 For i As Integer = 1 To ntrg - 1
-                    result(i) = result(i - 1) + bfit * 0.25 + 0.1
-                    acDoc.Editor.WriteMessage(i & "N.Blocos: " & result(i) & vbLf)
+                    result(i) = bfit
+                    ' acDoc.Editor.WriteMessage(i & "N.Blocos: " & result(i) & vbLf)
                 Next
 
                 Return result
             Else
                 Dim result(1) As Double
-                result(0) = bfit * 0.25
-                acDoc.Editor.WriteMessage("N.Blocos: " & result(0) & vbLf)
+                result(0) = bfit
+                'acDoc.Editor.WriteMessage("N.Blocos: " & result(0) & vbLf)
                 Return result
             End If
         End Function
@@ -259,7 +259,7 @@ Namespace Spral
 
                 If i - (startPoint.X + length) <= dc And dc <> 0 Then blcheigth = blcheigthC
 
-                lajewidth = getWidth(poly, New Point3d(i + 0.06, startPoint.Y, 0))
+                lajewidth = getWidth(poly, New Point3d(i, startPoint.Y, 0))
                 vgtexceed = getVigotaExcessSize(lajewidth)
                 a = New Point2d(i, getlowerpoint(poly, i).Y - vgtexceed)
                 b = New Point2d(i + VGTWIDTH, a.Y)
@@ -271,7 +271,7 @@ Namespace Spral
 
 
                 If (startPoint.X + length) - i + 0.12 < 0.2 Then
-                    lajewidth = getWidth(poly, New Point3d(i + 0.06, startPoint.Y, 0))
+                    lajewidth = getWidth(poly, New Point3d(i, startPoint.Y, 0))
                     vgtexceed = getVigotaExcessSize(lajewidth)
                     a = New Point2d(i, getlowerpoint(poly, i).Y - vgtexceed)
                     b = New Point2d(i + VGTWIDTH, a.Y)
@@ -440,18 +440,6 @@ Namespace Spral
                         flag = 0
                     End If
                 End If
-
-                'If width < 2 And flag = True And getWidth(poly, New Point3d(point.X, point.Y, 0)) <> getWidth(poly, New Point3d(point.X + 0.01, point.Y, 0)) Or width > 2 Then
-                '    If j = point.Y + 0.75 And Math.Floor(maxWidth / 2) Mod 2 <> 0 Then
-                '        j += 0.1
-                '        flag = 0
-                '    End If
-
-                '    If flag = 8 Then
-                '        j += 0.1
-                '        flag = 0
-                '    End If
-                'End If
 
             Next
         End Function

@@ -102,7 +102,7 @@ Namespace Spral
 
         ''gets positions
         Private Function getTrg(width As Double)
-            ''acDoc.Editor.WriteMessage("Width: " & width & vbLf)
+            acDoc.Editor.WriteMessage("Width: " & width & vbLf)
             Dim ntrg As Integer = Math.Floor(width / 2)
             ''acDoc.Editor.WriteMessage("ntrg: " & ntrg & vbLf)
             Dim bfit As Integer = Math.Floor(((width - (ntrg * 0.1)) / (ntrg + 1)) / 0.25)
@@ -120,18 +120,18 @@ Namespace Spral
 
                 result(0) = sfit * 0.25
 
-                ''acDoc.Editor.WriteMessage("N.Blocos: " & result(0) & vbLf)
+                acDoc.Editor.WriteMessage("1 - N.Blocos: " & result(0) & vbLf)
 
                 For i As Integer = 1 To ntrg - 1
-                    result(i) = result(0) + bfit * 0.25 + 0.1
-                    ''acDoc.Editor.WriteMessage("N.Blocos: " & result(i))
+                    result(i) = result(i - 1) + bfit * 0.25 + 0.1
+                    acDoc.Editor.WriteMessage(i & "N.Blocos: " & result(i) & vbLf)
                 Next
 
                 Return result
             Else
                 Dim result(1) As Double
                 result(0) = bfit * 0.25
-                ''acDoc.Editor.WriteMessage("N.Blocos: " & result(0) & vbLf)
+                acDoc.Editor.WriteMessage("N.Blocos: " & result(0) & vbLf)
                 Return result
             End If
         End Function

@@ -267,6 +267,8 @@ Namespace Spral
             Dim mf As Double = meio - buffer / 2
             Dim ml As Double = meio + buffer / 2
 
+            Dim flag As Double = 0
+
             For i = 0 To maxWidth Step telha
                 e = New Point2d(startpoint.X + mf, startpoint.Y + i)
                 f = New Point2d(e.X + buffer, e.Y)
@@ -345,7 +347,6 @@ Namespace Spral
                     If assertInPoly(e, f, g, h, poly) Then
                         If Not queromijar(poly, e, f) Then
                             drawRectangle(e, f, g, h, rotation)
-                            add(getReferenceRipa(buffer))
                         Else
                             If b.GetDistanceTo(c) > getWidth(poly, New Point3d(b.X - buffer, b.Y, 0)) Then
                                 e = querocagar(poly, e, f)
@@ -357,7 +358,6 @@ Namespace Spral
                                 g = New Point2d(f.X, f.Y + rpwith)
                             End If
                             drawRectangle(e, f, g, h, rotation)
-                            add(getReferenceRipa(buffer))
                         End If
                     End If
                 Next

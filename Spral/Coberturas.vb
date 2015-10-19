@@ -276,6 +276,12 @@ Namespace Spral
                     If Not queromijar(poly, f, e) Then
                         drawRectangle(e, f, g, h, rotation)
                         add(getReferenceRipa(buffer))
+                    Else
+                        Dim pts As Point3dCollection = queroMeio(poly, e, f)
+                        e = New Point2d(pts(0).X, pts(0).Y)
+                        f = New Point2d(pts(1).X, pts(1).Y)
+                        g = New Point2d(f.X, f.Y + rpwith)
+                        h = New Point2d(e.X, g.Y)
                         drawRectangle(e, f, g, h, rotation)
                         add(getReferenceRipa(buffer))
                     End If
@@ -369,7 +375,6 @@ Namespace Spral
             Return result
         End Function
 
-        ''mostra a tua raça o teu querer e ambiçao, nos so queremos esta merda a funcionar
         Private Function querocagar(pline As Polyline, p As Point2d, q As Point2d) As Point2d
             Dim l1 As Line = New Line(New Point3d(p.X, p.Y, 0), New Point3d(q.X, q.Y, 0))
             Dim l2 As Line
@@ -397,6 +402,23 @@ Namespace Spral
             'acDoc.Editor.WriteMessage(result.ToString & vbLf)
 
             Return result
+        End Function
+
+        Private Function queroMeio(pline As Polyline, p As Point2d, q As Point2d) As Point3dCollection
+            Dim l As Line = New Line(New Point3d(p.X, p.Y, 0), New Point3d(q.X, q.Y, 0))
+            Dim result As Point2d = p
+            Dim pts As Point3dCollection = New Point3dCollection()
+
+            pline.IntersectWith(l, Intersect.OnBothOperands, pts, IntPtr.Zero, IntPtr.Zero)
+
+            If pts.Count < 1 Then
+                ''nao faz nada
+            Else
+                Return pts
+            End If
+
+            Return pts
+
         End Function
 
         Private Function getReferenceRipa(buffer As Double) As String

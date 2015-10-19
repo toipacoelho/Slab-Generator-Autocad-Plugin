@@ -267,7 +267,7 @@ Namespace Spral
             Dim mf As Double = meio - buffer / 2
             Dim ml As Double = meio + buffer / 2
 
-            Dim flag As Double = 0
+            Dim flag As Double
 
             For i = 0 To maxWidth Step telha
                 e = New Point2d(startpoint.X + mf, startpoint.Y + i)
@@ -280,18 +280,16 @@ Namespace Spral
                         add(getReferenceRipa(buffer))
                     Else
                         Dim pts As Point3dCollection = queroMeio(poly, e, f)
-                        If pts.Count < 2 Then
-                            f = querocagar(poly, e, f)
-                            g = New Point2d(f.X, f.Y + rpwith)
-                        Else
-                            e = New Point2d(pts(0).X, pts(0).Y)
+                        e = New Point2d(pts(0).X, pts(0).Y)
+                        'acDoc.Editor.WriteMessage(pts(1).ToString)
+                        If (pts(1).X <> 0) Then
                             f = New Point2d(pts(1).X, pts(1).Y)
-                            g = New Point2d(f.X, f.Y + rpwith)
-                            h = New Point2d(e.X, g.Y)
-                            drawRectangle(e, f, g, h, rotation)
+                        End If
+                        g = New Point2d(f.X, f.Y + rpwith)
+                        h = New Point2d(e.X, g.Y)
+                        drawRectangle(e, f, g, h, rotation)
                         End If
                     End If
-                End If
                 add(getReferenceRipa(buffer))
             Next
 

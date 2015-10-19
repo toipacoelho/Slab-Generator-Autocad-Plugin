@@ -296,6 +296,11 @@ Namespace Spral
                         If Not queromijar(poly, f, e) Then
                             drawRectangle(e, f, g, h, rotation)
                             add(getReferenceRipa(buffer))
+                        Else
+                            f = querocagar(poly, e, f)
+                            g = New Point2d(f.X, f.Y + rpwith)
+                            drawRectangle(e, f, g, h, rotation)
+                            add(getReferenceRipa(buffer))
                         End If
                     End If
                 Next
@@ -319,9 +324,13 @@ Namespace Spral
                         If Not queromijar(poly, e, f) Then
                             drawRectangle(e, f, g, h, rotation)
                             add(getReferenceRipa(buffer))
+                        Else
+                            f = querocagar(poly, e, f)
+                            g = New Point2d(f.X, f.Y + rpwith)
+                            drawRectangle(e, f, g, h, rotation)
+                            add(getReferenceRipa(buffer))
                         End If
                     End If
-
                 Next
             Next
 
@@ -333,7 +342,7 @@ Namespace Spral
             Dim l2 As Line
             Dim result As Boolean = False
             Dim pts As Point3dCollection = New Point3dCollection()
-            ' iterate the vertices
+
             For i As Integer = 0 To pline.NumberOfVertices - 2
                 l2 = New Line(pline.GetPoint3dAt(i), pline.GetPoint3dAt(i + 1))
                 l1.IntersectWith(l2, Intersect.OnBothOperands, pts, IntPtr.Zero, IntPtr.Zero)
@@ -343,7 +352,45 @@ Namespace Spral
                     result = True
                 End If
             Next
-            acDoc.Editor.WriteMessage(result.ToString & vbLf)
+
+            l2 = New Line(pline.GetPoint3dAt(0), pline.GetPoint3dAt(pline.NumberOfVertices - 1))
+            l1.IntersectWith(l2, Intersect.OnBothOperands, pts, IntPtr.Zero, IntPtr.Zero)
+            If pts.Count < 1 Then
+                result = False
+            Else
+                result = True
+            End If
+            'acDoc.Editor.WriteMessage(result.ToString & vbLf)
+
+            Return result
+        End Function
+
+        ''mostra a tua raça o teu querer e ambiçao, nos so queremos esta merda a funcionar
+        Private Function querocagar(pline As Polyline, p As Point2d, q As Point2d) As Point2d
+            Dim l1 As Line = New Line(New Point3d(p.X, p.Y, 0), New Point3d(q.X, q.Y, 0))
+            Dim l2 As Line
+            Dim result As Point2d = p
+            Dim pts As Point3dCollection = New Point3dCollection()
+
+            For i As Integer = 0 To pline.NumberOfVertices - 2
+                l2 = New Line(pline.GetPoint3dAt(i), pline.GetPoint3dAt(i + 1))
+                l1.IntersectWith(l2, Intersect.OnBothOperands, pts, IntPtr.Zero, IntPtr.Zero)
+                If pts.Count < 1 Then
+                    ''nao faz nada
+                Else
+                    result = New Point2d(pts(0).X, pts(0).Y)
+                    Exit For
+                End If
+            Next
+
+            l2 = New Line(pline.GetPoint3dAt(0), pline.GetPoint3dAt(pline.NumberOfVertices - 1))
+            l1.IntersectWith(l2, Intersect.OnBothOperands, pts, IntPtr.Zero, IntPtr.Zero)
+            If pts.Count < 1 Then
+                ''nao faz nada
+            Else
+                result = New Point2d(pts(0).X, pts(0).Y)
+            End If
+            'acDoc.Editor.WriteMessage(result.ToString & vbLf)
 
             Return result
         End Function

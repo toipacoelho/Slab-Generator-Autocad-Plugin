@@ -278,14 +278,19 @@ Namespace Spral
                         add(getReferenceRipa(buffer))
                     Else
                         Dim pts As Point3dCollection = queroMeio(poly, e, f)
-                        e = New Point2d(pts(0).X, pts(0).Y)
-                        f = New Point2d(pts(1).X, pts(1).Y)
-                        g = New Point2d(f.X, f.Y + rpwith)
-                        h = New Point2d(e.X, g.Y)
-                        drawRectangle(e, f, g, h, rotation)
-                        add(getReferenceRipa(buffer))
+                        If pts.Count < 2 Then
+                            f = querocagar(poly, e, f)
+                            g = New Point2d(f.X, f.Y + rpwith)
+                        Else
+                            e = New Point2d(pts(0).X, pts(0).Y)
+                            f = New Point2d(pts(1).X, pts(1).Y)
+                            g = New Point2d(f.X, f.Y + rpwith)
+                            h = New Point2d(e.X, g.Y)
+                            drawRectangle(e, f, g, h, rotation)
+                        End If
                     End If
                 End If
+                add(getReferenceRipa(buffer))
             Next
 
             'esquerda
@@ -342,8 +347,15 @@ Namespace Spral
                             drawRectangle(e, f, g, h, rotation)
                             add(getReferenceRipa(buffer))
                         Else
-                            f = querocagar(poly, e, f)
-                            g = New Point2d(f.X, f.Y + rpwith)
+                            If b.GetDistanceTo(c) > getWidth(poly, New Point3d(b.X - buffer, b.Y, 0)) Then
+                                e = querocagar(poly, e, f)
+                                f = New Point2d(a.X + buffer, e.Y)
+                                g = New Point2d(f.X, f.Y + rpwith)
+                                h = New Point2d(e.X, g.Y)
+                            Else
+                                f = querocagar(poly, e, f)
+                                g = New Point2d(f.X, f.Y + rpwith)
+                            End If
                             drawRectangle(e, f, g, h, rotation)
                             add(getReferenceRipa(buffer))
                         End If

@@ -97,9 +97,9 @@ Partial Class FormCob
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(12, 9)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(93, 13)
+        Me.Label2.Size = New System.Drawing.Size(116, 13)
         Me.Label2.TabIndex = 24
-        Me.Label2.Text = "Tamanho da telha"
+        Me.Label2.Text = "Tamanho da telha (cm)"
         '
         'FormCob
         '

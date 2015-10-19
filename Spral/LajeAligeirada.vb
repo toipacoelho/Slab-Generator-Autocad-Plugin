@@ -102,7 +102,7 @@ Namespace Spral
 
         ''gets positions
         Private Function getTrg(width As Double)
-            acDoc.Editor.WriteMessage("Width: " & width & vbLf)
+            'acDoc.Editor.WriteMessage("Width: " & width & vbLf)
             Dim ntrg As Integer = Math.Floor(width / 2)
             ''acDoc.Editor.WriteMessage("ntrg: " & ntrg & vbLf)
             Dim bfit As Integer = Math.Floor(((width - (ntrg * 0.1)) / (ntrg + 1)) / 0.25)
@@ -527,11 +527,11 @@ Namespace Spral
 
         ''calcula o tamanho da vigota, retorna o excesso
         Private Function getVigotaExcessSize(lajeWidth As Double) As Double
-            For i As Double = 0 To lajeWidth + 0.3 Step 0.1
+            For i As Integer = 0 To lajeWidth * 10 + 3
                 vigotaLength = i
             Next
 
-            Return (vigotaLength - lajeWidth) / 2
+            Return (vigotaLength / 10 - lajeWidth) / 2
 
         End Function
 

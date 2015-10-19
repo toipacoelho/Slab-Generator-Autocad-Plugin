@@ -4,6 +4,7 @@ Imports Autodesk.AutoCAD.ApplicationServices
 Imports Autodesk.AutoCAD.DatabaseServices
 Imports Autodesk.AutoCAD.EditorInput
 Imports Autodesk.AutoCAD.Geometry
+Imports FileHelpers
 
 Namespace Spral
 
@@ -22,10 +23,13 @@ Namespace Spral
         Private mirror As Matrix3d
         Private mflag As Boolean
         Private lastcota = 0
+        Private lista As List(Of Export)
 
         ''Construtor
         Public Sub LajeAlveolar(pvtype As String, dir As Boolean, mir As Boolean)
             acDoc.LockDocument()
+
+            lista = New List(Of Export)()
 
             Dim acPoly As Polyline = getPolyline()
 
@@ -54,6 +58,17 @@ Namespace Spral
 
             drawAlveolares(poly, length, startpoint, rotation)
 
+            ''export data
+            Dim engine = New FileHelperAsyncEngine(Of Export)()
+
+            Dim savePath As New Windows.Forms.SaveFileDialog
+            savePath.ShowDialog()
+
+            Using engine.BeginWriteFile(savePath.FileName & ".csv")
+                For Each cust As Export In lista
+                    engine.WriteNext(cust)
+                Next
+            End Using
         End Sub
 
         ''prompts user for point 3D
@@ -235,8 +250,24 @@ Namespace Spral
                 'Else
                 drawRectangle(a, b, c, d, rotation)
                 'End If
+
+
+                outConfig(a, b, c, d)
+                
             Next
 
+        End Sub
+
+
+        Private Sub add(v As String)
+            Dim count As Integer = 1
+            Dim i As Integer
+            If (lista.Exists(Function(x) x.reference = v)) Then
+                i = lista.FindIndex(Function(x) x.reference = v)
+                count = lista(i).count + 1
+                lista.RemoveAt(i)
+            End If
+            lista.Add(New Export With {.reference = v, .count = count})
         End Sub
 
         Private Function cib(pline As Polyline, a As Point2d, b As Point2d)
@@ -273,18 +304,28 @@ Namespace Spral
         End Function
 
         Private Function getlowerpoint(pline As Polyline, x As Double) As Point3d
+
             Dim result As Double = 0
             Dim l As Line = New Line(New Point3d(x, -10 * pline.Length, 0), New Point3d(x, 10 * pline.Length, 0))
             Dim pts As Point3dCollection = New Point3dCollection()
-            Dim lista As List(Of Point3d) = New List(Of Point3d)
+            Dim listas As List(Of Point3d) = New List(Of Point3d)
 
             pline.IntersectWith(l, Intersect.OnBothOperands, pts, IntPtr.Zero, IntPtr.Zero)
 
             For Each pt In pts
-                lista.Add(pt)
+                listas.Add(pt)
             Next
 
-            Return lista.Item(0)
+            Dim a As Point3d
+
+            Try
+                a = listas.Item(0)
+                acDoc.Editor.WriteMessage("Passou" & vbLf)
+            Catch ex As Exception
+                a = getlowerpoint(pline, x - 0.25)
+                acDoc.Editor.WriteMessage("NAO" & vbLf)
+            End Try
+            Return a
 
         End Function
 
@@ -350,7 +391,8 @@ Namespace Spral
             Dim c As Point2d = New Point2d(b.X, b.Y + 0.2 + endWith)
             Dim d As Point2d = New Point2d(a.X, a.Y + 0.2 + getWidth(pline, New Point3d(a.X, b.Y, 0)))
             drawRectangle(a, b, c, d, rotation)
-            NPERFIS += 1
+
+            outConfig(a, b, c, d)
         End Sub
 
         Private Function getEndWith(pline As Polyline, pt As Point3d, left As Double) As Double
@@ -404,6 +446,24 @@ Namespace Spral
                     '' Save the new object to the database
                     acTrans.Commit()
                 End Using
+            End If
+
+        End Sub
+
+        Private Sub outConfig(a As Point2d, b As Point2d, c As Point2d, d As Point2d)
+            Dim temp As Double
+            If (a.GetDistanceTo(b) < d.GetDistanceTo(c)) Then
+                temp = a.GetDistanceTo(b)
+            Else
+                temp = d.GetDistanceTo(c)
+            End If
+
+            
+
+            If (b.GetDistanceTo(c) > a.GetDistanceTo(d)) Then
+                add(type & Math.Round(temp * 1000, 1).ToString("0000") & Math.Round(b.GetDistanceTo(c) * 1000).ToString("0000"))
+            Else
+                add(type & Math.Round(temp * 1000, 1).ToString("0000") & Math.Round(a.GetDistanceTo(d) * 1000).ToString("0000"))
             End If
 
         End Sub

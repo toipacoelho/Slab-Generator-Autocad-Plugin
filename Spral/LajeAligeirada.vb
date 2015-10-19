@@ -269,7 +269,6 @@ Namespace Spral
                 drawRectangle(a, b, c, d, rotation)
                 add(getReferenceVigota(b.GetDistanceTo(c)))
 
-
                 If (startPoint.X + length) - i + 0.12 < 0.2 Then
                     lajewidth = getWidth(poly, New Point3d(i, startPoint.Y, 0))
                     vgtexceed = getVigotaExcessSize(lajewidth)
@@ -286,7 +285,7 @@ Namespace Spral
                 If i + 0.12 + blclength > startPoint.X + length And (startPoint.X + length) - (i + 0.12) < blclength * 0.5 Then
                     Exit For
                 End If
-                lajewidth = getWidth(poly, New Point3d(i + 0.12 + blclength / 2, a.Y + vgtexceed, 0))
+                lajewidth = Math.Round(getWidth(poly, New Point3d(i + 0.12 + blclength / 2, a.Y + vgtexceed, 0)), 1)
                 drawBlcTrg(New Point2d(a.X, getlowerpoint(poly, a.X + blclength * 0.5).Y), blclength, lajewidth, poly, i, rotation)
 
             Next
@@ -423,10 +422,12 @@ Namespace Spral
             Dim z As Integer = 0
 
             For j As Double = point.Y To point.Y + width + BLCWIDTH Step BLCWIDTH
+
                 ' teste para garantir que não ultrpassa o limite da laje
                 If j + BLCWIDTH >= point.Y + width + 0.1 Then
                     Exit For
                 End If
+
                 drawRectangle(New Point2d(i + VGTWIDTH, j), New Point2d(i + VGTWIDTH + blclength, j), New Point2d(i + VGTWIDTH + blclength, j + BLCWIDTH), New Point2d(i + VGTWIDTH, j + BLCWIDTH), rotation)
                 add(getReferenceBloco(blclength))
                 'lista.Add(New Export With {.reference = getReferenceBloco(blclength), .count = 1})
@@ -434,12 +435,14 @@ Namespace Spral
                 flag += 1
 
                 If z < spacing.Length Then
-                    If flag = spacing(z) Then
+                    If width < 2 Then
+                    ElseIf flag = spacing(z) Then
                         j += 0.1
                         z += 1
                         flag = 0
                     End If
                 End If
+
 
             Next
         End Function

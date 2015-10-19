@@ -293,8 +293,10 @@ Namespace Spral
                     g = New Point2d(f.X, f.Y + rpwith)
                     h = New Point2d(e.X, g.Y)
                     If assertInPoly(e, f, g, h, poly) Then
-                        drawRectangle(e, f, g, h, rotation)
-                        add(getReferenceRipa(buffer))
+                        If Not queromijar(poly, f, e) Then
+                            drawRectangle(e, f, g, h, rotation)
+                            add(getReferenceRipa(buffer))
+                        End If
                     End If
                 Next
             Next
@@ -314,13 +316,37 @@ Namespace Spral
                     g = New Point2d(f.X, f.Y + rpwith)
                     h = New Point2d(e.X, g.Y)
                     If assertInPoly(e, f, g, h, poly) Then
-                        drawRectangle(e, f, g, h, rotation)
-                        add(getReferenceRipa(buffer))
+                        If Not queromijar(poly, e, f) Then
+                            drawRectangle(e, f, g, h, rotation)
+                            add(getReferenceRipa(buffer))
+                        End If
                     End If
+
                 Next
             Next
 
         End Sub
+
+        ''mostra a tua raça o teu querer e ambiçao, nos so queremos esta merda a funcionar
+        Private Function queromijar(pline As Polyline, p As Point2d, q As Point2d) As Boolean
+            Dim l1 As Line = New Line(New Point3d(p.X, p.Y, 0), New Point3d(q.X, q.Y, 0))
+            Dim l2 As Line
+            Dim result As Boolean = False
+            Dim pts As Point3dCollection = New Point3dCollection()
+            ' iterate the vertices
+            For i As Integer = 0 To pline.NumberOfVertices - 2
+                l2 = New Line(pline.GetPoint3dAt(i), pline.GetPoint3dAt(i + 1))
+                l1.IntersectWith(l2, Intersect.OnBothOperands, pts, IntPtr.Zero, IntPtr.Zero)
+                If pts.Count < 1 Then
+                    result = False
+                Else
+                    result = True
+                End If
+            Next
+            acDoc.Editor.WriteMessage(result.ToString & vbLf)
+
+            Return result
+        End Function
 
         Private Function getReferenceRipa(buffer As Double) As String
             Return "523010" & buffer * 100

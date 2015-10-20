@@ -250,7 +250,7 @@ Namespace Spral
             Dim startPoint As Point2d = New Point2d(pt.X + VGTWIDTH + blclength, pt.Y)
 
             For i As Double = startPoint.X To startPoint.X + length Step incremento
-                ''garante que não ultrapassa o tamanho da base
+                ''garante que não ultrapassa o tamanho da bases
                 If i + 0.1 > startPoint.X + length Then
                     Exit For
                 End If

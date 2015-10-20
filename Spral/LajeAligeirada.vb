@@ -258,6 +258,9 @@ Namespace Spral
                 If i - (startPoint.X + length) <= dc And dc <> 0 Then blcheigth = blcheigthC
 
                 lajewidth = getWidth(poly, New Point3d(i, startPoint.Y, 0))
+                If getWidth(poly, New Point3d(i + 0.12, startPoint.Y, 0)) > lajewidth Then
+                    lajewidth = getWidth(poly, New Point3d(i + 0.12, startPoint.Y, 0))
+                End If
                 vgtexceed = getVigotaExcessSize(lajewidth)
                 a = New Point2d(i, getlowerpoint(poly, i).Y - vgtexceed)
                 b = New Point2d(i + VGTWIDTH, a.Y)
@@ -269,6 +272,9 @@ Namespace Spral
 
                 If (startPoint.X + length) - i + 0.12 < 0.2 Then
                     lajewidth = getWidth(poly, New Point3d(i, startPoint.Y, 0))
+                    If getWidth(poly, New Point3d(i + 0.12, startPoint.Y, 0)) > lajewidth Then
+                        lajewidth = getWidth(poly, New Point3d(i + 0.12, startPoint.Y, 0))
+                    End If
                     vgtexceed = getVigotaExcessSize(lajewidth)
                     a = New Point2d(i, getlowerpoint(poly, i).Y - vgtexceed)
                     b = New Point2d(i + VGTWIDTH, a.Y)
@@ -315,7 +321,10 @@ Namespace Spral
 
                 If i - (startPoint.X + length) <= dc And dc <> 0 Then blcheigth = blcheigthC
 
-                lajewidth = getWidth(poly, New Point3d(i + 0.06, startPoint.Y, 0))
+                lajewidth = getWidth(poly, New Point3d(i, startPoint.Y, 0))
+                If getWidth(poly, New Point3d(i + 0.12, startPoint.Y, 0)) > lajewidth Then
+                    lajewidth = getWidth(poly, New Point3d(i + 0.12, startPoint.Y, 0))
+                End If
                 vgtexceed = getVigotaExcessSize(lajewidth)
                 a = New Point2d(i, getlowerpoint(poly, i).Y - vgtexceed)
                 b = New Point2d(i + VGTWIDTH, a.Y)
@@ -325,7 +334,10 @@ Namespace Spral
                 drawRectangle(a, b, c, d, rotation)
                 add(getReferenceVigota(b.GetDistanceTo(c)))
 
-                lajewidth = getWidth(poly, New Point3d(i + 0.18, startPoint.Y, 0))
+                lajewidth = getWidth(poly, New Point3d(i + 0.12, startPoint.Y, 0))
+                If getWidth(poly, New Point3d(i + 0.24, startPoint.Y, 0)) > lajewidth Then
+                    lajewidth = getWidth(poly, New Point3d(i + 0.24, startPoint.Y, 0))
+                End If
                 vgtexceed = getVigotaExcessSize(lajewidth)
                 a = New Point2d(i + VGTWIDTH, getlowerpoint(poly, i).Y - vgtexceed)
                 b = New Point2d(i + 2 * VGTWIDTH, a.Y)
@@ -369,7 +381,10 @@ Namespace Spral
 
                 If i - (startPoint.X + length) <= dc And dc <> 0 Then blcheigth = blcheigthC
 
-                lajewidth = getWidth(poly, New Point3d(i + 0.06, startPoint.Y, 0))
+                lajewidth = getWidth(poly, New Point3d(i, startPoint.Y, 0))
+                If getWidth(poly, New Point3d(i + 0.12, startPoint.Y, 0)) > lajewidth Then
+                    lajewidth = getWidth(poly, New Point3d(i + 0.12, startPoint.Y, 0))
+                End If
                 vgtexceed = getVigotaExcessSize(lajewidth)
                 a = New Point2d(i, getlowerpoint(poly, i).Y - vgtexceed)
                 b = New Point2d(i + VGTWIDTH, a.Y)
@@ -380,7 +395,10 @@ Namespace Spral
                 add(getReferenceVigota(b.GetDistanceTo(c)))
 
 
-                lajewidth = getWidth(poly, New Point3d(i + 0.18, startPoint.Y, 0))
+                lajewidth = getWidth(poly, New Point3d(i + 0.12, startPoint.Y, 0))
+                If getWidth(poly, New Point3d(i + 0.24, startPoint.Y, 0)) > lajewidth Then
+                    lajewidth = getWidth(poly, New Point3d(i + 0.24, startPoint.Y, 0))
+                End If
                 vgtexceed = getVigotaExcessSize(lajewidth)
                 a = New Point2d(i + VGTWIDTH, getlowerpoint(poly, i).Y - vgtexceed)
                 b = New Point2d(i + 2 * VGTWIDTH, a.Y)
@@ -391,7 +409,10 @@ Namespace Spral
                 add(getReferenceVigota(b.GetDistanceTo(c)))
 
 
-                lajewidth = getWidth(poly, New Point3d(i + 0.3, startPoint.Y, 0))
+                lajewidth = getWidth(poly, New Point3d(i + 0.24, startPoint.Y, 0))
+                If getWidth(poly, New Point3d(i + 0.32, startPoint.Y, 0)) > lajewidth Then
+                    lajewidth = getWidth(poly, New Point3d(i + 0.32, startPoint.Y, 0))
+                End If
                 vgtexceed = getVigotaExcessSize(lajewidth)
                 a = New Point2d(i + 2 * VGTWIDTH, getlowerpoint(poly, i).Y - vgtexceed)
                 b = New Point2d(i + 3 * VGTWIDTH, a.Y)

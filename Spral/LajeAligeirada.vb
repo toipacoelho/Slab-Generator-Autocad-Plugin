@@ -31,6 +31,7 @@ Namespace Spral
         Private blcheigth As Double = 0
         Private blcheigthC As Double = 0
         Private dc As Double = 0
+        Private init As Double
 
         ''construtor vindo do form
         Public Sub lajeAligeirada(pavimento As String, dcontra As Double, acontra As String, dir As Boolean, mir As Boolean)
@@ -74,6 +75,7 @@ Namespace Spral
 
             Dim poly As Polyline = acPoly.GetTransformedCopy(rotation)
             Dim startpoint As Point3d = getStartPoint(poly, aPt)
+            init = startpoint.Y
             Dim length As Double = startpoint.DistanceTo(getLastPoint(poly, aPt))
 
             maxWidth = getMaxWidth(poly, aPt)
@@ -115,18 +117,13 @@ Namespace Spral
                 ''acDoc.Editor.WriteMessage("Dmidle: " & ((width - (ntrg * 0.1)) / ntrg) & vbLf)
                 ''acDoc.Editor.WriteMessage("Dside: " & twidth & vbLf)
                 Dim sfit As Integer = Math.Floor((twidth / 2) / 0.25)
-
                 Dim result(ntrg - 1) As Double
-
                 result(0) = sfit
-
                 ' acDoc.Editor.WriteMessage("1 - N.Blocos: " & result(0) & vbLf)
-
                 For i As Integer = 1 To ntrg - 1
                     result(i) = bfit
                     ' acDoc.Editor.WriteMessage(i & "N.Blocos: " & result(i) & vbLf)
                 Next
-
                 Return result
             Else
                 Dim result(1) As Double
@@ -134,6 +131,7 @@ Namespace Spral
                 'acDoc.Editor.WriteMessage("N.Blocos: " & result(0) & vbLf)
                 Return result
             End If
+
         End Function
 
         ''prompts user for point 3D
@@ -419,31 +417,31 @@ Namespace Spral
 
             'Declare a single-dimension array and set array element values
             Dim spacing = getTrg(maxWidth)
+
             Dim z As Integer = 0
 
-            For j As Double = point.Y To point.Y + width + BLCWIDTH Step BLCWIDTH
+            For j As Double = init To point.Y + width + BLCWIDTH Step BLCWIDTH
 
                 ' teste para garantir que não ultrpassa o limite da laje
                 If j + BLCWIDTH >= point.Y + width + 0.1 Then
                     Exit For
                 End If
 
-                drawRectangle(New Point2d(i + VGTWIDTH, j), New Point2d(i + VGTWIDTH + blclength, j), New Point2d(i + VGTWIDTH + blclength, j + BLCWIDTH), New Point2d(i + VGTWIDTH, j + BLCWIDTH), rotation)
-                add(getReferenceBloco(blclength))
-                'lista.Add(New Export With {.reference = getReferenceBloco(blclength), .count = 1})
+                If j > point.Y Then
+                    drawRectangle(New Point2d(i + VGTWIDTH, j), New Point2d(i + VGTWIDTH + blclength, j), New Point2d(i + VGTWIDTH + blclength, j + BLCWIDTH), New Point2d(i + VGTWIDTH, j + BLCWIDTH), rotation)
+                    add(getReferenceBloco(blclength))
 
+                End If
                 flag += 1
 
                 If z < spacing.Length Then
-                    If width < 2 Then
-                    ElseIf flag = spacing(z) Then
+                    ' If width < 2 Then
+                    If flag = spacing(z) Then
                         j += 0.1
                         z += 1
                         flag = 0
                     End If
                 End If
-
-
             Next
         End Function
 

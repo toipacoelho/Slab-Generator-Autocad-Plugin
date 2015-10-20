@@ -128,3 +128,4 @@ C:\Users\lili\Desktop\spral\Spral\obj\Release\Spral.vbproj.GenerateResource.Cach
 C:\Users\lili\Desktop\spral\Spral\obj\Release\Spral.dll
 C:\Users\lili\Desktop\spral\Spral\obj\Release\Spral.xml
 C:\Users\lili\Desktop\spral\Spral\obj\Release\Spral.pdb
+C:\Users\Pedro Ceolho\Documents\spral.git\Spral\obj\Release\Spral.vbprojResolveAssemblyReference.cache

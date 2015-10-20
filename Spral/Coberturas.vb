@@ -377,8 +377,8 @@ Namespace Spral
 
             While flag > 0.0
                 flag -= 1
-                acDoc.Editor.WriteMessage("n:" & flag)
-                'add(getReferenceRipa(buffer))
+                'acDoc.Editor.WriteMessage("n:" & flag)
+                add(getReferenceRipa(buffer))
             End While
 
 

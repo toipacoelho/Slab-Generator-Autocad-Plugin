@@ -448,7 +448,7 @@ Namespace Spral
                     Exit For
                 End If
 
-                If j > point.Y Then
+                If j >= point.Y Then
                     drawRectangle(New Point2d(i + VGTWIDTH, j), New Point2d(i + VGTWIDTH + blclength, j), New Point2d(i + VGTWIDTH + blclength, j + BLCWIDTH), New Point2d(i + VGTWIDTH, j + BLCWIDTH), rotation)
                     add(getReferenceBloco(blclength))
 

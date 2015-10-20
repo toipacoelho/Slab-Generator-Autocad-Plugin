@@ -289,8 +289,9 @@ Namespace Spral
                 If i + 0.12 + blclength > startPoint.X + length And (startPoint.X + length) - (i + 0.12) < blclength * 0.5 Then
                     Exit For
                 End If
+
                 lajewidth = Math.Round(getWidth(poly, New Point3d(i + 0.12 + blclength / 2, a.Y + vgtexceed, 0)), 1)
-                drawBlcTrg(New Point2d(a.X, getlowerpoint(poly, a.X + blclength * 0.5).Y), blclength, lajewidth, poly, i, rotation)
+                drawBlcTrg(New Point2d(a.X, getlowerpoint(poly, b.X + blclength * 0.5).Y), blclength, lajewidth, poly, i, rotation)
 
             Next
         End Sub
@@ -352,7 +353,7 @@ Namespace Spral
                     Exit For
                 End If
                 lajewidth = getWidth(poly, New Point3d(i + 0.24 + blclength, a.Y + vgtexceed, 0))
-                drawBlcTrg(New Point2d(a.X, a.Y + vgtexceed), blclength, lajewidth, poly, i + 0.12, rotation)
+                drawBlcTrg(New Point2d(a.X, getlowerpoint(poly, b.X + blclength * 0.5).Y), blclength, lajewidth, poly, i, rotation)
             Next
         End Sub
 
@@ -410,8 +411,8 @@ Namespace Spral
 
 
                 lajewidth = getWidth(poly, New Point3d(i + 0.24, startPoint.Y, 0))
-                If getWidth(poly, New Point3d(i + 0.32, startPoint.Y, 0)) > lajewidth Then
-                    lajewidth = getWidth(poly, New Point3d(i + 0.32, startPoint.Y, 0))
+                If getWidth(poly, New Point3d(i + 0.36, startPoint.Y, 0)) > lajewidth Then
+                    lajewidth = getWidth(poly, New Point3d(i + 0.36, startPoint.Y, 0))
                 End If
                 vgtexceed = getVigotaExcessSize(lajewidth)
                 a = New Point2d(i + 2 * VGTWIDTH, getlowerpoint(poly, i).Y - vgtexceed)
@@ -428,7 +429,7 @@ Namespace Spral
                 End If
 
                 lajewidth = getWidth(poly, New Point3d(i + 0.36 + blclength, a.Y + vgtexceed, 0))
-                drawBlcTrg(New Point2d(a.X, a.Y + vgtexceed), blclength, lajewidth, poly, i + 0.24, rotation)
+                drawBlcTrg(New Point2d(a.X, getlowerpoint(poly, b.X + blclength * 0.5).Y), blclength, lajewidth, poly, i, rotation)
             Next
         End Sub
 
@@ -441,14 +442,14 @@ Namespace Spral
 
             Dim z As Integer = 0
 
-            For j As Double = init To point.Y + width + BLCWIDTH Step BLCWIDTH
+            For j As Double = init To point.Y + width + BLCWIDTH * 1.5 Step BLCWIDTH
 
                 ' teste para garantir que não ultrpassa o limite da laje
                 If j + BLCWIDTH >= point.Y + width + 0.1 Then
                     Exit For
                 End If
 
-                If j > point.Y Then
+                If j >= point.Y Then
                     drawRectangle(New Point2d(i + VGTWIDTH, j), New Point2d(i + VGTWIDTH + blclength, j), New Point2d(i + VGTWIDTH + blclength, j + BLCWIDTH), New Point2d(i + VGTWIDTH, j + BLCWIDTH), rotation)
                     add(getReferenceBloco(blclength))
 

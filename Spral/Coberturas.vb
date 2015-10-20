@@ -277,7 +277,8 @@ Namespace Spral
                 If assertInPoly(e, f, g, h, poly) Then
                     If Not queromijar(poly, f, e) Then
                         drawRectangle(e, f, g, h, rotation)
-                        add(getReferenceRipa(buffer))
+                        'add(getReferenceRipa(buffer))
+                        flag += e.GetDistanceTo(f)
                     Else
                         Dim pts As Point3dCollection = queroMeio(poly, e, f)
                         e = New Point2d(pts(0).X, pts(0).Y)
@@ -288,9 +289,10 @@ Namespace Spral
                         g = New Point2d(f.X, f.Y + rpwith)
                         h = New Point2d(e.X, g.Y)
                         drawRectangle(e, f, g, h, rotation)
+                        'add(getReferenceRipa(buffer))
+                        flag += e.GetDistanceTo(f)
                         End If
                     End If
-                add(getReferenceRipa(buffer))
             Next
 
             'esquerda
@@ -310,7 +312,8 @@ Namespace Spral
                     If assertInPoly(e, f, g, h, poly) Then
                         If Not queromijar(poly, f, e) Then
                             drawRectangle(e, f, g, h, rotation)
-                            add(getReferenceRipa(buffer))
+                            'add(getReferenceRipa(buffer))
+                            flag += e.GetDistanceTo(f)
                         Else
                             If b.GetDistanceTo(c) < getWidth(poly, New Point3d(b.X - buffer, b.Y, 0)) Then
                                 e = querocagar(poly, e, f)
@@ -322,7 +325,8 @@ Namespace Spral
                                 g = New Point2d(f.X, f.Y + rpwith)
                             End If
                             drawRectangle(e, f, g, h, rotation)
-                            add(getReferenceRipa(buffer))
+                            'add(getReferenceRipa(buffer))
+                            flag += e.GetDistanceTo(f)
                         End If
                     End If
                 Next
@@ -345,6 +349,8 @@ Namespace Spral
                     If assertInPoly(e, f, g, h, poly) Then
                         If Not queromijar(poly, e, f) Then
                             drawRectangle(e, f, g, h, rotation)
+                            'add(getReferenceRipa(buffer))
+                            flag += e.GetDistanceTo(f)
                         Else
                             If b.GetDistanceTo(c) > getWidth(poly, New Point3d(b.X - buffer, b.Y, 0)) Then
                                 e = querocagar(poly, e, f)
@@ -356,10 +362,25 @@ Namespace Spral
                                 g = New Point2d(f.X, f.Y + rpwith)
                             End If
                             drawRectangle(e, f, g, h, rotation)
+                            'add(getReferenceRipa(buffer))
+                            flag += e.GetDistanceTo(f)
                         End If
                     End If
                 Next
             Next
+
+            ''acDoc.Editor.WriteMessage("linear:" & flag)
+            flag = flag / buffer
+            ''acDoc.Editor.WriteMessage("n:" & flag)
+            flag = Math.Ceiling(flag)
+            ' acDoc.Editor.WriteMessage("ceiling:" & flag)
+
+            While flag > 0.0
+                flag -= 1
+                acDoc.Editor.WriteMessage("n:" & flag)
+                'add(getReferenceRipa(buffer))
+            End While
+
 
         End Sub
 

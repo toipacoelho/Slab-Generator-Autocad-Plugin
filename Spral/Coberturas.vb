@@ -263,6 +263,7 @@ Namespace Spral
             Dim f As Point2d = New Point2d()
             Dim g As Point2d = New Point2d()
             Dim h As Point2d = New Point2d()
+            Dim aux As Double
 
             Dim mf As Double = meio - buffer / 2
             Dim ml As Double = meio + buffer / 2
@@ -281,7 +282,8 @@ Namespace Spral
                         flag += e.GetDistanceTo(f)
                     Else
                         Dim pts As Point3dCollection = queroMeio(poly, e, f)
-                        e = New Point2d(pts(0).X, pts(0).Y)
+                        Dim pts2 As Point3dCollection = queroMeio(poly, g, h)
+                        e = New Point2d(pts2(0).X, pts(0).Y)
                         'acDoc.Editor.WriteMessage(pts(1).ToString)
                         If (pts(1).X <> 0) Then
                             f = New Point2d(pts(1).X, pts(1).Y)
@@ -297,13 +299,26 @@ Namespace Spral
 
             'esquerda
             For i = mf To 0 Step buffer * (-1)
-                a = New Point2d(startpoint.X + i - prfwidth / 2, getlowerpoint(poly, startpoint.X + i - prfwidth / 2).Y)
+
+                Dim min As Double = getlowerpoint(poly, startpoint.X + i - prfwidth / 2).Y
+                If min > getlowerpoint(poly, startpoint.X + i + prfwidth / 2).Y Then
+                    min = getlowerpoint(poly, startpoint.X + i + prfwidth / 2).Y
+                End If
+
+                a = New Point2d(startpoint.X + i - prfwidth / 2, min)
                 b = New Point2d(a.X + prfwidth, a.Y)
-                c = New Point2d(b.X, b.Y + getWidth(poly, New Point3d(b.X, b.Y, 0)))
+
+                Dim max = getWidth(poly, New Point3d(a.X, b.Y, 0))
+                If max < getWidth(poly, New Point3d(b.X, b.Y, 0)) Then
+                    max = getWidth(poly, New Point3d(b.X, b.Y, 0))
+                End If
+
+                c = New Point2d(b.X, b.Y + max)
                 d = New Point2d(a.X, c.Y)
                 printDimension(b, c, rotation)
                 drawRectangle(a, b, c, d, rotation)
                 add(getReferenceperfil(b.GetDistanceTo(c)))
+
                 For j = 0 To maxWidth Step telha
                     e = New Point2d(a.X + prfwidth / 2, startpoint.Y + j)
                     f = New Point2d(e.X - buffer, e.Y)
@@ -316,31 +331,53 @@ Namespace Spral
                             flag += e.GetDistanceTo(f)
                         Else
                             If b.GetDistanceTo(c) < getWidth(poly, New Point3d(b.X - buffer, b.Y, 0)) Then
-                                e = querocagar(poly, e, f)
-                                f = New Point2d(a.X - buffer, e.Y)
+                                aux = querocagar(poly, e, f).X
+                                If aux < querocagar(poly, g, h).X Then
+                                    e = New Point2d(querocagar(poly, g, h).X, querocagar(poly, e, f).Y)
+                                Else
+                                    e = querocagar(poly, e, f)
+                                End If
+                                f = New Point2d(a.X - buffer + prfwidth / 2, e.Y)
                                 g = New Point2d(f.X, f.Y + rpwith)
                                 h = New Point2d(e.X, g.Y)
                             Else
-                                f = querocagar(poly, e, f)
+                                If aux < querocagar(poly, g, h).X Then
+                                    f = New Point2d(querocagar(poly, g, h).X, querocagar(poly, e, f).Y)
+                                Else
+                                    f = querocagar(poly, e, f)
+                                End If
                                 g = New Point2d(f.X, f.Y + rpwith)
                             End If
-                            drawRectangle(e, f, g, h, rotation)
-                            'add(getReferenceRipa(buffer))
-                            flag += e.GetDistanceTo(f)
-                        End If
+                                drawRectangle(e, f, g, h, rotation)
+                                'add(getReferenceRipa(buffer))
+                                flag += e.GetDistanceTo(f)
+                            End If
                     End If
                 Next
             Next
 
             'direita
             For i = ml To length Step buffer
-                a = New Point2d(startpoint.X + i - prfwidth / 2, getlowerpoint(poly, startpoint.X + i - prfwidth / 2).Y)
+
+                Dim min As Double = getlowerpoint(poly, startpoint.X + i + prfwidth / 2).Y
+                If min > getlowerpoint(poly, startpoint.X + i - prfwidth / 2).Y Then
+                    min = getlowerpoint(poly, startpoint.X + i - prfwidth / 2).Y
+                End If
+                a = New Point2d(startpoint.X + i - prfwidth / 2, min)
                 b = New Point2d(a.X + prfwidth, a.Y)
-                c = New Point2d(b.X, b.Y + getWidth(poly, New Point3d(a.X, a.Y, 0)))
+
+                Dim max = getWidth(poly, New Point3d(a.X, b.Y, 0))
+                If max < getWidth(poly, New Point3d(b.X, b.Y, 0)) Then
+                    max = getWidth(poly, New Point3d(b.X, b.Y, 0))
+                End If
+
+                c = New Point2d(b.X, b.Y + max)
                 d = New Point2d(a.X, c.Y)
+
                 printDimension(b, c, rotation)
                 drawRectangle(a, b, c, d, rotation)
                 add(getReferenceperfil(b.GetDistanceTo(c)))
+
                 For j = 0 To maxWidth Step telha
                     e = New Point2d(a.X + prfwidth / 2, startpoint.Y + j)
                     f = New Point2d(e.X + buffer, e.Y)
@@ -353,8 +390,22 @@ Namespace Spral
                             flag += e.GetDistanceTo(f)
                         Else
                             If b.GetDistanceTo(c) > getWidth(poly, New Point3d(b.X - buffer, b.Y, 0)) Then
+                                aux = querocagar(poly, e, f).X
+                                If aux > querocagar(poly, g, h).X Then
+                                    e = New Point2d(querocagar(poly, g, h).X, querocagar(poly, e, f).Y)
+                                Else
+                                    e = querocagar(poly, e, f)
+                                End If
+                                f = New Point2d(a.X + buffer + 0.05, e.Y)
+                                g = New Point2d(f.X, f.Y + rpwith)
+                                h = New Point2d(e.X, g.Y)
+                            ElseIf b.GetDistanceTo(c) < getWidth(poly, New Point3d(b.X + buffer, b.Y, 0)) Then
+                                'If aux < querocagar(poly, g, h).X Then
+                                '    e = New Point2d(querocagar(poly, g, h).X, querocagar(poly, e, f).Y)
+                                'Else
                                 e = querocagar(poly, e, f)
-                                f = New Point2d(a.X + buffer, e.Y)
+                                'End If
+                                f = New Point2d(a.X + buffer + 0.05, e.Y)
                                 g = New Point2d(f.X, f.Y + rpwith)
                                 h = New Point2d(e.X, g.Y)
                             Else
@@ -437,7 +488,6 @@ Namespace Spral
             Else
                 result = New Point2d(pts(0).X, pts(0).Y)
             End If
-            'acDoc.Editor.WriteMessage(result.ToString & vbLf)
 
             Return result
         End Function

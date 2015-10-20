@@ -442,7 +442,7 @@ Namespace Spral
 
             Dim z As Integer = 0
 
-            For j As Double = init To point.Y + width + BLCWIDTH * 1.5 Step BLCWIDTH
+            For j As Double = init To point.Y + width + BLCWIDTH Step BLCWIDTH
 
                 ' teste para garantir que não ultrpassa o limite da laje
                 If j + BLCWIDTH >= point.Y + width + 0.1 Then

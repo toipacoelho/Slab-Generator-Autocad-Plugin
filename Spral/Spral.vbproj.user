@@ -7,4 +7,8 @@
     <StartProgram>C:\Program Files\Autodesk\AutoCAD 2015\acad.exe</StartProgram>
     <StartAction>Program</StartAction>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <StartProgram>C:\Program Files\Autodesk\AutoCAD 2015\acad.exe</StartProgram>
+    <StartAction>Program</StartAction>
+  </PropertyGroup>
 </Project>

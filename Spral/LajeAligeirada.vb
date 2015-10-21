@@ -40,17 +40,18 @@ Namespace Spral
             lista = New List(Of Export)()
 
             If pavimento.Length = 8 Then
-                tipovigota = pavimento.Chars(1)
+                tipovigota = Val(pavimento.Chars(1)) - 1
                 blclength = Convert.ToDouble(pavimento.Chars(3) & pavimento.Chars(4)) / 100
                 blcheigth = Convert.ToDouble(pavimento.Chars(6) & pavimento.Chars(7)) / 100
             Else
-                tipovigota = pavimento.Chars(2)
+                tipovigota = Val(pavimento.Chars(1)) - 1
                 blclength = Convert.ToDouble(pavimento.Chars(4) & pavimento.Chars(5)) / 100
                 blcheigth = Convert.ToDouble(pavimento.Chars(7) & pavimento.Chars(8)) / 100
             End If
 
-            blcheigthC = Convert.ToDouble(pavimento.Chars(3) & pavimento.Chars(4))
+            'acDoc.Editor.WriteMessage("tipo: " & pavimento.Chars(1) & "convertido " & Val(pavimento.Chars(1)) - 1)
 
+            blcheigthC = Convert.ToDouble(acontra.Chars(3) & acontra.Chars(4))
             dc = Convert.ToDouble(dcontra)
 
             Dim acPoly As Polyline = getPolyline()
@@ -550,7 +551,8 @@ Namespace Spral
 
         ''calcula o tamanho da vigota, retorna o excesso
         Private Function getVigotaExcessSize(lajeWidth As Double) As Double
-            For i As Integer = 0 To lajeWidth * 10 + 3
+            Dim limit As Integer = Math.Round(lajeWidth * 10 + 3)
+            For i As Integer = 0 To limit
                 vigotaLength = i
             Next
 

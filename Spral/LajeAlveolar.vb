@@ -435,9 +435,9 @@ Namespace Spral
                     ''rotates polyline
                     d.TransformBy(rotation.Inverse())
 
-                    If (mflag = True) Then
-                        d.TransformBy(mirror)
-                    End If
+                    'If (mflag = True) Then
+                    '    d.TransformBy(mirror)
+                    'End If
 
                     '' Add the new object to the block table record and the transaction
                     acBlkTblRec.AppendEntity(d)

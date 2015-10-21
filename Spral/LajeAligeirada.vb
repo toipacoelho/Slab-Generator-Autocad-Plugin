@@ -550,11 +550,11 @@ Namespace Spral
 
         ''calcula o tamanho da vigota, retorna o excesso
         Private Function getVigotaExcessSize(lajeWidth As Double) As Double
-            For i As Integer = 0 To lajeWidth * 10 + 3
+            For i As Integer = 0 To Math.Round(lajeWidth + 0.3, 1) Step 0.1
                 vigotaLength = i
             Next
 
-            Return (vigotaLength / 10 - lajeWidth) / 2
+            Return (vigotaLength - lajeWidth) / 2
 
         End Function
 

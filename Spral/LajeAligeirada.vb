@@ -40,11 +40,11 @@ Namespace Spral
             lista = New List(Of Export)()
 
             If pavimento.Length = 8 Then
-                tipovigota = pavimento.Chars(1)
+                tipovigota = Convert.ToInt16(pavimento.Chars(1)) - 1
                 blclength = Convert.ToDouble(pavimento.Chars(3) & pavimento.Chars(4)) / 100
                 blcheigth = Convert.ToDouble(pavimento.Chars(6) & pavimento.Chars(7)) / 100
             Else
-                tipovigota = pavimento.Chars(2)
+                tipovigota = Convert.ToInt16(pavimento.Chars(2)) - 1
                 blclength = Convert.ToDouble(pavimento.Chars(4) & pavimento.Chars(5)) / 100
                 blcheigth = Convert.ToDouble(pavimento.Chars(7) & pavimento.Chars(8)) / 100
             End If
@@ -599,10 +599,6 @@ Namespace Spral
                     ''rotates polyline
                     d.TransformBy(rotation.Inverse())
 
-                    If (mflag = True) Then
-                        d.TransformBy(mirror)
-                    End If
-
                     '' Add the new object to the block table record and the transaction
                     acBlkTblRec.AppendEntity(d)
                     acTrans.AddNewlyCreatedDBObject(d, True)
@@ -643,7 +639,7 @@ Namespace Spral
         Private Function getReferenceVigota(size As Double) As String
             Dim xx = "XX"
             xx = Math.Round(size, 1) * 10
-            Return "5210" & tipovigota & 0 & xx
+            Return "5210" & tipovigota & "0" & xx
         End Function
 
         Private Function getReferenceBloco(size As Double) As String

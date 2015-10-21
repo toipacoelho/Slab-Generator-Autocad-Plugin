@@ -353,7 +353,7 @@ Namespace Spral
                     Exit For
                 End If
                 lajewidth = getWidth(poly, New Point3d(i + 0.24 + blclength, a.Y + vgtexceed, 0))
-                drawBlcTrg(New Point2d(a.X, getlowerpoint(poly, b.X + blclength * 0.5).Y), blclength, lajewidth, poly, i + 0.24, rotation)
+                drawBlcTrg(New Point2d(a.X, getlowerpoint(poly, b.X + blclength * 0.5).Y), blclength, lajewidth, poly, i + 0.12, rotation)
             Next
         End Sub
 
@@ -429,7 +429,7 @@ Namespace Spral
                 End If
 
                 lajewidth = getWidth(poly, New Point3d(i + 0.36 + blclength, a.Y + vgtexceed, 0))
-                drawBlcTrg(New Point2d(a.X, getlowerpoint(poly, b.X + blclength * 0.5).Y), blclength, lajewidth, poly, i + 0.36, rotation)
+                drawBlcTrg(New Point2d(a.X, getlowerpoint(poly, b.X + blclength * 0.5).Y), blclength, lajewidth, poly, i + 0.24, rotation)
             Next
         End Sub
 

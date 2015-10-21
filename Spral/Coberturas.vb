@@ -250,6 +250,7 @@ Namespace Spral
             End Using
         End Sub
 
+        ''é preciso compor esta salganhada e documentar
         Private Sub drawCobertura(poly As Polyline, length As Double, startpoint As Point3d, rotation As Matrix3d)
             Dim meio As Double = length / 2
 

@@ -200,17 +200,6 @@ Namespace Spral
             Return result
         End Function
 
-        ''calcula o tamanho da vigota, retorna o excesso
-        Private Function getVigotaExcessSize(lajeWidth As Double) As Double
-
-            Dim result As Double
-            For i As Double = 0 To lajeWidth Step 0.1
-                result = i
-            Next
-
-            Return result
-        End Function
-
         ''auxiliar function to draw rectangular shapes
         Private Sub drawRectangle(a As Point2d, b As Point2d, c As Point2d, d As Point2d, rotation As Matrix3d)
             '' Start a transaction
@@ -682,9 +671,9 @@ Namespace Spral
                     ''rotates polyline
                     d.TransformBy(rotation.Inverse())
 
-                    'If (mflag = True) Then
-                    '    d.TransformBy(mirror)
-                    'End If
+                    If (mflag = True) Then
+                        d.TransformBy(mirror)
+                    End If
 
                     '' Add the new object to the block table record and the transaction
                     acBlkTblRec.AppendEntity(d)

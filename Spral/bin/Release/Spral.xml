@@ -6,47 +6,56 @@ Spral
 </name>
 </assembly>
 <members>
-<member name="P:Spral.My.Resources.Resources.ResourceManager">
-	<summary>
-  Returns the cached ResourceManager instance used by this class.
-</summary>
-</member><member name="P:Spral.My.Resources.Resources.Culture">
-	<summary>
-  Overrides the current thread's CurrentUICulture property for all
-  resource lookups using this strongly typed resource class.
-</summary>
-</member><member name="T:Spral.My.Resources.Resources">
-	<summary>
+<member name="T:Spral.myCommands">
+<summary>
   A strongly-typed resource class, for looking up localized strings, etc.
 </summary>
-</member><member name="P:Spral.myCommands.ResourceManager">
-	<summary>
+</member>
+<member name="P:Spral.myCommands.ResourceManager">
+<summary>
   Returns the cached ResourceManager instance used by this class.
 </summary>
-</member><member name="P:Spral.myCommands.Culture">
-	<summary>
+</member>
+<member name="P:Spral.myCommands.Culture">
+<summary>
   Overrides the current thread's CurrentUICulture property for all
   resource lookups using this strongly typed resource class.
 </summary>
-</member><member name="P:Spral.myCommands.MyCommandLocal">
-	<summary>
+</member>
+<member name="P:Spral.myCommands.MyCommandLocal">
+<summary>
   Looks up a localized string similar to MyCommand.
 </summary>
-</member><member name="P:Spral.myCommands.MyLispFunctionLocal">
-	<summary>
+</member>
+<member name="P:Spral.myCommands.MyLispFunctionLocal">
+<summary>
   Looks up a localized string similar to MyLispFunction.
 </summary>
-</member><member name="P:Spral.myCommands.MyPickFirstLocal">
-	<summary>
+</member>
+<member name="P:Spral.myCommands.MyPickFirstLocal">
+<summary>
   Looks up a localized string similar to MyPickFirst.
 </summary>
-</member><member name="P:Spral.myCommands.MySessionCmdLocal">
-	<summary>
+</member>
+<member name="P:Spral.myCommands.MySessionCmdLocal">
+<summary>
   Looks up a localized string similar to MySessionCmd.
 </summary>
-</member><member name="T:Spral.myCommands">
-	<summary>
+</member>
+<member name="T:Spral.My.Resources.Resources">
+<summary>
   A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:Spral.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:Spral.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
 </summary>
 </member>
 </members>

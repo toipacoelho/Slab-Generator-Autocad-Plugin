@@ -104,8 +104,9 @@ Namespace Spral
         End Sub
 
         ''gets positions
-        Private Function getTrg(width As Double)
+        Private Function getTrg(x As Double)
             'acDoc.Editor.WriteMessage("Width: " & width & vbLf)
+            Dim width As Double = x + getVigotaExcessSize(x) * 2
             Dim ntrg As Integer = Math.Floor(width / 2)
             ''acDoc.Editor.WriteMessage("ntrg: " & ntrg & vbLf)
             Dim bfit As Integer = Math.Floor(((width - (ntrg * 0.1)) / (ntrg + 1)) / 0.25)
@@ -262,7 +263,12 @@ Namespace Spral
                 If getWidth(poly, New Point3d(i + 0.12, startPoint.Y, 0)) > lajewidth Then
                     lajewidth = getWidth(poly, New Point3d(i + 0.12, startPoint.Y, 0))
                 End If
+
+                'acDoc.Editor.WriteMessage(Math.Floor(lajewidth * 10 + 3))
+
                 vgtexceed = getVigotaExcessSize(lajewidth)
+
+                'acDoc.Editor.WriteMessage(vgtexceed)
                 a = New Point2d(i, getlowerpoint(poly, i).Y - vgtexceed)
                 b = New Point2d(i + VGTWIDTH, a.Y)
                 c = New Point2d(b.X, a.Y + lajewidth + 2 * vgtexceed)
@@ -375,7 +381,8 @@ Namespace Spral
             length = length - VGTWIDTH - blclength
             Dim startPoint As Point2d = New Point2d(pt.X + VGTWIDTH + blclength, pt.Y)
 
-            For i As Double = startPoint.X To startPoint.X + length Step incremento
+            For i As Double = startPoint.X To startPoint.X + length + blclength Step incremento
+
                 ''garante que não ultrapassa o tamanho da base
                 If i + 0.36 > startPoint.X + length Then
                     Exit For
@@ -424,6 +431,8 @@ Namespace Spral
                 drawRectangle(a, b, c, d, rotation)
                 add(getReferenceVigota(b.GetDistanceTo(c)))
 
+                'acDoc.Editor.WriteMessage((startPoint.X + length) - (i + 0.36) & "<" & blclength * 0.5 & vbLf)
+
                 ''garante que não ultrapassa o tamanho da base
                 If i + 0.36 + blclength > startPoint.X + length And (startPoint.X + length) - (i + 0.36) < blclength * 0.5 Then
                     Exit For
@@ -431,6 +440,7 @@ Namespace Spral
 
                 lajewidth = getWidth(poly, New Point3d(i + 0.36 + blclength, a.Y + vgtexceed, 0))
                 drawBlcTrg(New Point2d(a.X, getlowerpoint(poly, b.X + blclength * 0.5).Y), blclength, lajewidth, poly, i + 0.24, rotation)
+
             Next
         End Sub
 
@@ -551,11 +561,10 @@ Namespace Spral
 
         ''calcula o tamanho da vigota, retorna o excesso
         Private Function getVigotaExcessSize(lajeWidth As Double) As Double
-            Dim limit As Integer = Math.Round(lajeWidth * 10 + 3)
+            Dim limit As Integer = Math.Floor(lajeWidth * 10 + 3)
             For i As Integer = 0 To limit
                 vigotaLength = i
             Next
-
             Return (vigotaLength / 10 - lajeWidth) / 2
 
         End Function
@@ -601,9 +610,9 @@ Namespace Spral
                     ''rotates polyline
                     d.TransformBy(rotation.Inverse())
 
-                    'If (mflag = True) Then
-                    '    d.TransformBy(mirror)
-                    'End If
+                    If (mflag = True) Then
+                        d.TransformBy(mirror)
+                    End If
 
                     '' Add the new object to the block table record and the transaction
                     acBlkTblRec.AppendEntity(d)

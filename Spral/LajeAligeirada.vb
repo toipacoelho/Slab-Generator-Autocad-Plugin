@@ -5,6 +5,7 @@ Imports Autodesk.AutoCAD.DatabaseServices
 Imports Autodesk.AutoCAD.EditorInput
 Imports Autodesk.AutoCAD.Geometry
 Imports FileHelpers
+Imports System.IO
 
 Namespace Spral
 
@@ -37,7 +38,25 @@ Namespace Spral
         Public Sub lajeAligeirada(pavimento As String, dcontra As Double, acontra As String, dir As Boolean, mir As Boolean)
             acDoc.LockDocument()
 
+            Dim hs As HostApplicationServices = HostApplicationServices.Current
+            Dim fp As String = hs.FindFile(acDoc.Name, acDoc.Database, FindFileHint.Default)
+            Dim fn As String = Path.GetFileNameWithoutExtension(fp)
+            Dim fd As String = Path.GetDirectoryName(fp)
+
             lista = New List(Of Export)()
+            Dim engine = New FileHelperAsyncEngine(Of Export)()
+
+            If My.Computer.FileSystem.FileExists(fd + "\" + fn + ".csv") Then
+                Using engine.BeginReadFile(fd + "\" + fn + ".csv")
+                    ' The engine is IEnumerable
+                    For Each cust As Export In engine
+                        ' your code here
+                        For flag = cust.count To 0 Step -1
+                            add(cust.reference)
+                        Next
+                    Next
+                End Using
+            End If
 
             If pavimento.Length = 8 Then
                 tipovigota = Val(pavimento.Chars(1)) - 1
@@ -89,13 +108,12 @@ Namespace Spral
                 drawVigotaSimples(poly, length, startpoint, rotation)
             End If
 
-            ''export data
-            Dim engine = New FileHelperAsyncEngine(Of Export)()
+            'Dim savePath As New Windows.Forms.SaveFileDialog
+            'savePath.ShowDialog()
 
-            Dim savePath As New Windows.Forms.SaveFileDialog
-            savePath.ShowDialog()
-
-            Using engine.BeginWriteFile(savePath.FileName & ".csv")
+            ''escrever
+            acDoc.Editor.WriteMessage(vbLf + "Exported to: " + fd + "\" + fn + ".csv")
+            Using engine.BeginWriteFile(fd + "\" + fn + ".csv")
                 For Each cust As Export In lista
                     engine.WriteNext(cust)
                 Next

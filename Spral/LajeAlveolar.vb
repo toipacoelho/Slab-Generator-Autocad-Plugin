@@ -5,6 +5,7 @@ Imports Autodesk.AutoCAD.DatabaseServices
 Imports Autodesk.AutoCAD.EditorInput
 Imports Autodesk.AutoCAD.Geometry
 Imports FileHelpers
+Imports System.IO
 
 Namespace Spral
 
@@ -29,7 +30,25 @@ Namespace Spral
         Public Sub LajeAlveolar(pvtype As String, dir As Boolean, mir As Boolean)
             acDoc.LockDocument()
 
+            Dim hs As HostApplicationServices = HostApplicationServices.Current
+            Dim fp As String = hs.FindFile(acDoc.Name, acDoc.Database, FindFileHint.Default)
+            Dim fn As String = Path.GetFileNameWithoutExtension(fp)
+            Dim fd As String = Path.GetDirectoryName(fp)
+
             lista = New List(Of Export)()
+            Dim engine = New FileHelperAsyncEngine(Of Export)()
+
+            If My.Computer.FileSystem.FileExists(fd + "\" + fn + ".csv") Then
+                Using engine.BeginReadFile(fd + "\" + fn + ".csv")
+                    ' The engine is IEnumerable
+                    For Each cust As Export In engine
+                        ' your code here
+                        For flag = cust.count To 0 Step -1
+                            add(cust.reference)
+                        Next
+                    Next
+                End Using
+            End If
 
             Dim acPoly As Polyline = getPolyline()
 
@@ -64,7 +83,8 @@ Namespace Spral
             Dim savePath As New Windows.Forms.SaveFileDialog
             savePath.ShowDialog()
 
-            Using engine.BeginWriteFile(savePath.FileName & ".csv")
+            acDoc.Editor.WriteMessage(vbLf + "Exported to: " + fd + "\" + fn + ".csv")
+            Using engine.BeginWriteFile(fd + "\" + fn + ".csv")
                 For Each cust As Export In lista
                     engine.WriteNext(cust)
                 Next
@@ -457,8 +477,6 @@ Namespace Spral
             Else
                 temp = d.GetDistanceTo(c)
             End If
-
-            
 
             If (b.GetDistanceTo(c) > a.GetDistanceTo(d)) Then
                 add(type & Math.Round(temp * 1000, 1).ToString("0000") & Math.Round(b.GetDistanceTo(c) * 1000).ToString("0000"))

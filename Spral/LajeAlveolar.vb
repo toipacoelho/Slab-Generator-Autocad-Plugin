@@ -77,9 +77,6 @@ Namespace Spral
 
             drawAlveolares(poly, length, startpoint, rotation)
 
-            ''export data
-            Dim engine = New FileHelperAsyncEngine(Of Export)()
-
             Dim savePath As New Windows.Forms.SaveFileDialog
             savePath.ShowDialog()
 

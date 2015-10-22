@@ -63,7 +63,7 @@ Namespace Spral
                 blclength = Convert.ToDouble(pavimento.Chars(3) & pavimento.Chars(4)) / 100
                 blcheigth = Convert.ToDouble(pavimento.Chars(6) & pavimento.Chars(7)) / 100
             Else
-                tipovigota = Val(pavimento.Chars(1)) - 1
+                tipovigota = Val(pavimento.Chars(2)) - 1
                 blclength = Convert.ToDouble(pavimento.Chars(4) & pavimento.Chars(5)) / 100
                 blcheigth = Convert.ToDouble(pavimento.Chars(7) & pavimento.Chars(8)) / 100
             End If

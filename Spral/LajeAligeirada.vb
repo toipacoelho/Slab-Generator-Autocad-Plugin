@@ -352,46 +352,66 @@ Namespace Spral
             length = length - VGTWIDTH - blclength
             Dim startPoint As Point2d = New Point2d(pt.X + VGTWIDTH + blclength, pt.Y)
 
-            For i As Double = startPoint.X To startPoint.X + length Step incremento
-                ''garante que não ultrapassa o tamanho da base
-                If i + 0.24 > startPoint.X + length Then
-                    Exit For
-                End If
+            For i As Double = startPoint.X To startPoint.X + length + blclength Step incremento
+                Try
+                    ''garante que não ultrapassa o tamanho da base
+                    If i + 0.24 > startPoint.X + length Then
+                        lajewidth = getWidth(poly, New Point3d(i, startPoint.Y, 0))
+                        vgtexceed = getVigotaExcessSize(lajewidth)
+                        a = New Point2d(i, getlowerpoint(poly, i).Y - vgtexceed)
+                        b = New Point2d(i + VGTWIDTH, a.Y)
+                        c = New Point2d(b.X, a.Y + lajewidth + 2 * vgtexceed)
+                        d = New Point2d(a.X, c.Y)
+                        printDimension(b, c, rotation)
+                        drawRectangle(a, b, c, d, rotation)
+                        add(getReferenceVigota(b.GetDistanceTo(c)))
+                        Exit For
+                    End If
 
-                If i - (startPoint.X + length) <= dc And dc <> 0 Then blcheigth = blcheigthC
+                    If i - (startPoint.X + length) <= dc And dc <> 0 Then blcheigth = blcheigthC
 
-                lajewidth = getWidth(poly, New Point3d(i, startPoint.Y, 0))
-                If getWidth(poly, New Point3d(i + 0.12, startPoint.Y, 0)) > lajewidth Then
+                    lajewidth = getWidth(poly, New Point3d(i, startPoint.Y, 0))
+                    If getWidth(poly, New Point3d(i + 0.12, startPoint.Y, 0)) > lajewidth Then
+                        lajewidth = getWidth(poly, New Point3d(i + 0.12, startPoint.Y, 0))
+                    End If
+                    vgtexceed = getVigotaExcessSize(lajewidth)
+                    a = New Point2d(i, getlowerpoint(poly, i).Y - vgtexceed)
+                    b = New Point2d(i + VGTWIDTH, a.Y)
+                    c = New Point2d(b.X, a.Y + lajewidth + 2 * vgtexceed)
+                    d = New Point2d(a.X, c.Y)
+                    printDimension(b, c, rotation)
+                    drawRectangle(a, b, c, d, rotation)
+                    add(getReferenceVigota(b.GetDistanceTo(c)))
+
                     lajewidth = getWidth(poly, New Point3d(i + 0.12, startPoint.Y, 0))
-                End If
-                vgtexceed = getVigotaExcessSize(lajewidth)
-                a = New Point2d(i, getlowerpoint(poly, i).Y - vgtexceed)
-                b = New Point2d(i + VGTWIDTH, a.Y)
-                c = New Point2d(b.X, a.Y + lajewidth + 2 * vgtexceed)
-                d = New Point2d(a.X, c.Y)
-                printDimension(b, c, rotation)
-                drawRectangle(a, b, c, d, rotation)
-                add(getReferenceVigota(b.GetDistanceTo(c)))
+                    If getWidth(poly, New Point3d(i + 0.24, startPoint.Y, 0)) > lajewidth Then
+                        lajewidth = getWidth(poly, New Point3d(i + 0.24, startPoint.Y, 0))
+                    End If
+                    vgtexceed = getVigotaExcessSize(lajewidth)
+                    a = New Point2d(i + VGTWIDTH, getlowerpoint(poly, i).Y - vgtexceed)
+                    b = New Point2d(i + 2 * VGTWIDTH, a.Y)
+                    c = New Point2d(b.X, a.Y + lajewidth + 2 * vgtexceed)
+                    d = New Point2d(a.X, c.Y)
+                    printDimension(b, c, rotation)
+                    drawRectangle(a, b, c, d, rotation)
+                    add(getReferenceVigota(b.GetDistanceTo(c)))
 
-                lajewidth = getWidth(poly, New Point3d(i + 0.12, startPoint.Y, 0))
-                If getWidth(poly, New Point3d(i + 0.24, startPoint.Y, 0)) > lajewidth Then
-                    lajewidth = getWidth(poly, New Point3d(i + 0.24, startPoint.Y, 0))
-                End If
-                vgtexceed = getVigotaExcessSize(lajewidth)
-                a = New Point2d(i + VGTWIDTH, getlowerpoint(poly, i).Y - vgtexceed)
-                b = New Point2d(i + 2 * VGTWIDTH, a.Y)
-                c = New Point2d(b.X, a.Y + lajewidth + 2 * vgtexceed)
-                d = New Point2d(a.X, c.Y)
-                printDimension(b, c, rotation)
-                drawRectangle(a, b, c, d, rotation)
-                add(getReferenceVigota(b.GetDistanceTo(c)))
+                    ''garante que não ultrapassa o tamanho da base
+                    'If i + 0.24 + blclength > startPoint.X + length And (startPoint.X + length) - (i + 0.24) < blclength * 1.5 Then
+                    '    Exit For
+                    'End If
 
-                ''garante que não ultrapassa o tamanho da base
-                If i + 0.24 + blclength > startPoint.X + length And (startPoint.X + length) - (i + 0.24) < blclength * 0.5 Then
-                    Exit For
-                End If
-                lajewidth = getWidth(poly, New Point3d(i + 0.24 + blclength, a.Y + vgtexceed, 0))
-                drawBlcTrg(New Point2d(a.X, getlowerpoint(poly, b.X + blclength * 0.5).Y), blclength, lajewidth, poly, i + 0.12, rotation)
+                    'lajewidth = getWidth(poly, New Point3d(b.X, a.Y + vgtexceed, 0))
+                    'drawBlcTrg(New Point2d(a.X, getlowerpoint(poly, b.X).Y), blclength, lajewidth, poly, i + 0.12, rotation)
+
+                    lajewidth = getWidth(poly, New Point3d(i + 0.24 + blclength, a.Y + vgtexceed, 0))
+                    drawBlcTrg(New Point2d(a.X, getlowerpoint(poly, b.X + blclength * 0.5).Y), blclength, lajewidth, poly, i + 0.12, rotation)
+                Catch ex As Exception
+                    lajewidth = getWidth(poly, New Point3d(b.X, a.Y + vgtexceed, 0))
+                    drawBlcTrg(New Point2d(a.X, getlowerpoint(poly, b.X).Y), blclength, lajewidth, poly, i + 0.12, rotation)
+                End Try
+
+
             Next
         End Sub
 

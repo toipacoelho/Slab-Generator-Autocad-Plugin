@@ -78,16 +78,9 @@ Namespace Spral
             drawAlveolares(poly, length, startpoint, rotation)
 
             Dim msg As MsgBoxResult = MsgBox("A desenhar")
-
-            Dim confirmation As Boolean
+            Dim err As MsgBoxResult
             Dim Box As MsgBoxResult = MsgBox("Confimar laje?", MsgBoxStyle.YesNo)
             If Box = MsgBoxResult.Yes Then
-                confirmation = True
-            Else
-                confirmation = False
-            End If
-
-            If confirmation Then
                 'escrever
                 acDoc.Editor.WriteMessage(vbLf + "Exported to: " + fd + "\" + fn + ".csv")
                 Using engine.BeginWriteFile(fd + "\" + fn + ".csv")
@@ -95,7 +88,11 @@ Namespace Spral
                         engine.WriteNext(cust)
                     Next
                 End Using
+            Else
+                '' nao
+                err = MsgBox("Exportação de referências cancelada, por favor execute Ctrl+Z")
             End If
+
         End Sub
 
         ''prompts user for point 3D

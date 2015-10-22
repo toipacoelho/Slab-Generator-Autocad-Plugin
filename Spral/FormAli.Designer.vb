@@ -119,12 +119,14 @@ Partial Class FormAli
         '
         'inac
         '
+        Me.inac.DisplayMember = "0"
         Me.inac.FormattingEnabled = True
         Me.inac.Items.AddRange(New Object() {"22x25", "22x30", "33x12", "33x16", "33x20", "33x25", "40x09", "40x12", "40x16", "40x20", "40x25", "48x12", "48x16", "48x20"})
         Me.inac.Location = New System.Drawing.Point(12, 104)
         Me.inac.Name = "inac"
         Me.inac.Size = New System.Drawing.Size(157, 21)
         Me.inac.TabIndex = 21
+        Me.inac.SelectedIndex = 1
         '
         'Label3
         '
@@ -141,6 +143,7 @@ Partial Class FormAli
         Me.indc.Name = "indc"
         Me.indc.Size = New System.Drawing.Size(157, 20)
         Me.indc.TabIndex = 19
+        Me.indc.Text = "0"
         '
         'Label4
         '

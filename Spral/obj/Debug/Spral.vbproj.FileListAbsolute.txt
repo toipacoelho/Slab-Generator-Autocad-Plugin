@@ -155,5 +155,4 @@ C:\Users\Pedro Ceolho\Documents\spral\Spral\obj\Debug\Spral.vbproj.GenerateResou
 C:\Users\Pedro Ceolho\Documents\spral\Spral\obj\Debug\Spral.dll
 C:\Users\Pedro Ceolho\Documents\spral\Spral\obj\Debug\Spral.xml
 C:\Users\Pedro Ceolho\Documents\spral\Spral\obj\Debug\Spral.pdb
-C:\Users\Pedro Ceolho\Documents\spral\Spral\obj\Debug\Spral.Confirmar.resources
 C:\Users\Pedro Ceolho\Documents\spral\Spral\obj\Debug\Spral.vbprojResolveAssemblyReference.cache

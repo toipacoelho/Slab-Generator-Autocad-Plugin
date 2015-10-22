@@ -43,7 +43,7 @@ Namespace Spral
                     ' The engine is IEnumerable
                     For Each cust As Export In engine
                         ' your code here
-                        For flag = cust.count To 0 Step -1
+                        For flag = cust.count To 1 Step -1
                             add(cust.reference)
                         Next
                     Next

@@ -388,7 +388,7 @@ Namespace Spral
                         lajewidth = getWidth(poly, New Point3d(i + 0.24, startPoint.Y, 0))
                     End If
                     vgtexceed = getVigotaExcessSize(lajewidth)
-                    a = New Point2d(i + VGTWIDTH, getlowerpoint(poly, i).Y - vgtexceed)
+                    a = New Point2d(i + VGTWIDTH, getlowerpoint(poly, i + 0.12).Y - vgtexceed)
                     b = New Point2d(i + 2 * VGTWIDTH, a.Y)
                     c = New Point2d(b.X, a.Y + lajewidth + 2 * vgtexceed)
                     d = New Point2d(a.X, c.Y)
@@ -404,11 +404,12 @@ Namespace Spral
                     'lajewidth = getWidth(poly, New Point3d(b.X, a.Y + vgtexceed, 0))
                     'drawBlcTrg(New Point2d(a.X, getlowerpoint(poly, b.X).Y), blclength, lajewidth, poly, i + 0.12, rotation)
 
-                    lajewidth = getWidth(poly, New Point3d(i + 0.24 + blclength, a.Y + vgtexceed, 0))
-                    drawBlcTrg(New Point2d(a.X, getlowerpoint(poly, b.X + blclength * 0.5).Y), blclength, lajewidth, poly, i + 0.12, rotation)
+                    lajewidth = getWidth(poly, New Point3d(a.X + blclength * 0.5, a.Y + vgtexceed, 0))
+                    drawBlcTrg(New Point2d(a.X, getlowerpoint(poly, a.X + blclength * 0.5).Y), blclength, lajewidth, poly, i + 0.12, rotation)
                 Catch ex As Exception
+                    ''i - 0.12 - blclength funciona nao sei porque, antes estava i+ 0.12
                     lajewidth = getWidth(poly, New Point3d(b.X, a.Y + vgtexceed, 0))
-                    drawBlcTrg(New Point2d(a.X, getlowerpoint(poly, b.X).Y), blclength, lajewidth, poly, i + 0.12, rotation)
+                    drawBlcTrg(New Point2d(a.X, getlowerpoint(poly, b.X).Y), blclength, lajewidth, poly, i - 0.12 - blclength, rotation)
                 End Try
 
 

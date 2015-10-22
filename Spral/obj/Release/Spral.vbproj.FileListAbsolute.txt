@@ -145,4 +145,3 @@ C:\Users\Pedro Ceolho\Documents\spral\Spral\obj\Release\Spral.vbproj.GenerateRes
 C:\Users\Pedro Ceolho\Documents\spral\Spral\obj\Release\Spral.dll
 C:\Users\Pedro Ceolho\Documents\spral\Spral\obj\Release\Spral.xml
 C:\Users\Pedro Ceolho\Documents\spral\Spral\obj\Release\Spral.pdb
-C:\Users\Pedro Ceolho\Documents\spral\Spral\obj\Release\Spral.Confirmar.resources

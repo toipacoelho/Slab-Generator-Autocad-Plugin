@@ -136,7 +136,6 @@ C:\Users\Pedro Ceolho\Documents\spral\Spral\bin\Release\Spral.xml
 C:\Users\Pedro Ceolho\Documents\spral\Spral\bin\Release\AcMPolygonMGD.dll
 C:\Users\Pedro Ceolho\Documents\spral\Spral\bin\Release\FileHelpers.dll
 C:\Users\Pedro Ceolho\Documents\spral\Spral\bin\Release\FileHelpers.xml
-C:\Users\Pedro Ceolho\Documents\spral\Spral\obj\Release\Spral.vbprojResolveAssemblyReference.cache
 C:\Users\Pedro Ceolho\Documents\spral\Spral\obj\Release\Spral.FormAli.resources
 C:\Users\Pedro Ceolho\Documents\spral\Spral\obj\Release\Spral.FormAlv.resources
 C:\Users\Pedro Ceolho\Documents\spral\Spral\obj\Release\Spral.FormCob.resources
@@ -146,3 +145,4 @@ C:\Users\Pedro Ceolho\Documents\spral\Spral\obj\Release\Spral.vbproj.GenerateRes
 C:\Users\Pedro Ceolho\Documents\spral\Spral\obj\Release\Spral.dll
 C:\Users\Pedro Ceolho\Documents\spral\Spral\obj\Release\Spral.xml
 C:\Users\Pedro Ceolho\Documents\spral\Spral\obj\Release\Spral.pdb
+C:\Users\Pedro Ceolho\Documents\spral\Spral\obj\Release\Spral.Confirmar.resources

@@ -77,15 +77,25 @@ Namespace Spral
 
             drawAlveolares(poly, length, startpoint, rotation)
 
-            Dim savePath As New Windows.Forms.SaveFileDialog
-            savePath.ShowDialog()
+            Dim msg As MsgBoxResult = MsgBox("A desenhar")
 
-            acDoc.Editor.WriteMessage(vbLf + "Exported to: " + fd + "\" + fn + ".csv")
-            Using engine.BeginWriteFile(fd + "\" + fn + ".csv")
-                For Each cust As Export In lista
-                    engine.WriteNext(cust)
-                Next
-            End Using
+            Dim confirmation As Boolean
+            Dim Box As MsgBoxResult = MsgBox("Confimar laje?", MsgBoxStyle.YesNo)
+            If Box = MsgBoxResult.Yes Then
+                confirmation = True
+            Else
+                confirmation = False
+            End If
+
+            If confirmation Then
+                'escrever
+                acDoc.Editor.WriteMessage(vbLf + "Exported to: " + fd + "\" + fn + ".csv")
+                Using engine.BeginWriteFile(fd + "\" + fn + ".csv")
+                    For Each cust As Export In lista
+                        engine.WriteNext(cust)
+                    Next
+                End Using
+            End If
         End Sub
 
         ''prompts user for point 3D

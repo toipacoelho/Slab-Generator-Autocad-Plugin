@@ -136,6 +136,12 @@
   <ItemGroup>
     <Compile Include="Coberturas.vb" />
     <Compile Include="Export.vb" />
+    <Compile Include="Confirmar.Designer.vb">
+      <DependentUpon>Confirmar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Confirmar.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormAlv.Designer.vb">
       <DependentUpon>FormAlv.vb</DependentUpon>
     </Compile>
@@ -179,6 +185,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Confirmar.resx">
+      <DependentUpon>Confirmar.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormAli.resx">
       <DependentUpon>FormAli.vb</DependentUpon>
     </EmbeddedResource>

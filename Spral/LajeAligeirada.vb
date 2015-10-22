@@ -102,22 +102,39 @@ Namespace Spral
 
             If pavimento.Chars(0) = "3" Then
                 drawVigotaTripla(poly, length, startpoint, rotation)
+
             ElseIf pavimento.Chars(0) = "2" Then
                 drawVigotaDupla(poly, length, startpoint, rotation)
             Else
                 drawVigotaSimples(poly, length, startpoint, rotation)
             End If
 
+
             'Dim savePath As New Windows.Forms.SaveFileDialog
             'savePath.ShowDialog()
 
-            ''escrever
-            acDoc.Editor.WriteMessage(vbLf + "Exported to: " + fd + "\" + fn + ".csv")
-            Using engine.BeginWriteFile(fd + "\" + fn + ".csv")
-                For Each cust As Export In lista
-                    engine.WriteNext(cust)
-                Next
-            End Using
+            'Dim form As Confirmar = New Confirmar
+            'form.Show()
+
+            Dim msg As MsgBoxResult = MsgBox("A desenhar")
+
+            Dim confirmation As Boolean
+            Dim Box As MsgBoxResult = MsgBox("Confimar laje?", MsgBoxStyle.YesNo)
+            If Box = MsgBoxResult.Yes Then
+                confirmation = True
+            Else
+                confirmation = False
+            End If
+
+            If confirmation Then
+                'escrever
+                acDoc.Editor.WriteMessage(vbLf + "Exported to: " + fd + "\" + fn + ".csv")
+                Using engine.BeginWriteFile(fd + "\" + fn + ".csv")
+                    For Each cust As Export In lista
+                        engine.WriteNext(cust)
+                    Next
+                End Using
+            End If
 
         End Sub
 
@@ -478,7 +495,7 @@ Namespace Spral
                     Exit For
                 End If
 
-                If j >= point.Y Then
+                If j >= point.Y - 0.1 Then
                     drawRectangle(New Point2d(i + VGTWIDTH, j), New Point2d(i + VGTWIDTH + blclength, j), New Point2d(i + VGTWIDTH + blclength, j + BLCWIDTH), New Point2d(i + VGTWIDTH, j + BLCWIDTH), rotation)
                     add(getReferenceBloco(blclength))
 
@@ -558,6 +575,8 @@ Namespace Spral
                     acBlkTblRec.AppendEntity(acPoly)
                     acTrans.AddNewlyCreatedDBObject(acPoly, True)
                 End Using
+
+                acTrans.TransactionManager.QueueForGraphicsFlush()
 
                 '' Save the new object to the database
                 acTrans.Commit()

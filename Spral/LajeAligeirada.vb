@@ -461,7 +461,7 @@ Namespace Spral
                     lajewidth = getWidth(poly, New Point3d(i + 0.24, startPoint.Y, 0))
                 End If
                 vgtexceed = getVigotaExcessSize(lajewidth)
-                a = New Point2d(i + VGTWIDTH, getlowerpoint(poly, i).Y - vgtexceed)
+                a = New Point2d(i + VGTWIDTH, getlowerpoint(poly, i + 0.12).Y - vgtexceed)
                 b = New Point2d(i + 2 * VGTWIDTH, a.Y)
                 c = New Point2d(b.X, a.Y + lajewidth + 2 * vgtexceed)
                 d = New Point2d(a.X, c.Y)
@@ -469,13 +469,13 @@ Namespace Spral
                 drawRectangle(a, b, c, d, rotation)
                 add(getReferenceVigota(b.GetDistanceTo(c)))
 
-
+                ''isto esta tudo muito feio
                 lajewidth = getWidth(poly, New Point3d(i + 0.24, startPoint.Y, 0))
                 If getWidth(poly, New Point3d(i + 0.36, startPoint.Y, 0)) > lajewidth Then
                     lajewidth = getWidth(poly, New Point3d(i + 0.36, startPoint.Y, 0))
                 End If
                 vgtexceed = getVigotaExcessSize(lajewidth)
-                a = New Point2d(i + 2 * VGTWIDTH, getlowerpoint(poly, i).Y - vgtexceed)
+                a = New Point2d(i + 2 * VGTWIDTH, getlowerpoint(poly, i + 0.24).Y - vgtexceed)
                 b = New Point2d(i + 3 * VGTWIDTH, a.Y)
                 c = New Point2d(b.X, a.Y + lajewidth + 2 * vgtexceed)
                 d = New Point2d(a.X, c.Y)

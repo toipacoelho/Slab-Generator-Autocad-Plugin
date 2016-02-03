@@ -1,14 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ReferencePath>C:\ObjectARX 2015\inc\;C:\ObjectARX 2015\inc-x64\;C:\ObjectARX 2016\inc-x64\;C:\ObjectARX 2016\inc\</ReferencePath>
+    <ReferencePath>C:\ObjectARX 2015\inc\;C:\ObjectARX 2015\inc-x64\;C:\ObjectARX 2016\inc-x64\;C:\ObjectARX 2016\inc\;C:\Program Files\Autodesk\AutoCAD 2016\</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <StartProgram>C:\Program Files\Autodesk\AutoCAD 2015\acad.exe</StartProgram>
+    <StartProgram>C:\Program Files\Autodesk\AutoCAD 2016\acad.exe</StartProgram>
     <StartAction>Program</StartAction>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <StartProgram>C:\Program Files\Autodesk\AutoCAD 2015\acad.exe</StartProgram>
     <StartAction>Program</StartAction>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <StartAction>Program</StartAction>
+    <StartProgram>C:\Program Files\Autodesk\AutoCAD 2016\acad.exe</StartProgram>
   </PropertyGroup>
 </Project>
